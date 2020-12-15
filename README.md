@@ -8,6 +8,10 @@
   - 컴파일러는 함수에 대하여 함수의 이름, 파라미터 타입, Calling Convention 등을 사용하여 이름을 생성
   
 ## ML
+### Model
+#### Time-Series
+* ARIMA
+* Data Structure for time-series
 ### Feature Engineering
 #### Encoding
 * One-Hot Encoding
@@ -19,11 +23,16 @@
 * Target Encoding
   - 👍: 차원의 저주 해결, 회귀/분류 문제 모두 bias를 줄이는 효과
   - 👎: Data Leakage(학습 데이터에는 예측값에 대한 정보가 종속되는 문제), 검증 데이터의 타깃 분포가 학습 데이터와 다르면 과적합 발생
-  - 단점 해결 방법1-Smoothing
+  - 단점 해결 방법1 - Smoothing
   ![](https://latex.codecogs.com/svg.latex?Encoded\,Value(after\,smoothing)%20=%20\frac%20{mean(target)%20*%20nrow%20+%20global\,mean%20*%20\alpha}%20{nrow%20+%20\alpha})
-  - 단점 해결 방법2-CV Loop
-  - 단점 해결 방법3-Expanding Mean
-  
+  - 단점 해결 방법2 - CV Loop
+  - 단점 해결 방법3 - Expanding Mean
+#### Basis Expansion
+#### Dimension Reduction
+
+## DL
+### Preprocessing
+* Batch Normalization
   
 ## Reference
 - [Name Mangling](https://thepassion.tistory.com/61)
