@@ -19,5 +19,12 @@
 * Target Encoding
   - 👍: 차원의 저주 해결, 회귀/분류 문제 모두 bias를 줄이는 효과
   - 👎: Data Leakage(학습 데이터에는 예측값에 대한 정보가 종속되는 문제), 검증 데이터의 타깃 분포가 학습 데이터와 다르면 과적합 발생
-  - Solution1-Smoothing
+  - 단점 해결 방법1-Smoothing
   ![](https://latex.codecogs.com/svg.latex?Encoded\,Value(after\,smoothing)%20=%20\frac%20{mean(target)%20*%20nrow%20+%20global\,mean%20*%20\alpha}%20{nrow%20+%20\alpha})
+  - 단점 해결 방법2-CV Loop
+  - 단점 해결 방법3-Expanding Mean
+  
+  
+## Reference
+- [Name Mangling](https://thepassion.tistory.com/61)
+- [Categorical Value Encoding 과 Mean Encoding](https://dailyheumsi.tistory.com/120)
