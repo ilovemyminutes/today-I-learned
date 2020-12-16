@@ -5,7 +5,7 @@
 ### Libraries
 #### NumPy | Python
 - `np.random.rand(d1, d2, ... , dn)`: n차원 배열 생성. 각 값은 \[0, 1)
-- `np.arange(start, stop, step)`: `range()` + step으로 실수값 사용 가능
+- `np.arange(start, stop, step)`: `range()`와 같은 역할 + 실수값의 step 사용 가능
 - `np.linspace(start, stop, num)`: 구간 [start, stop]을 균등하게 분할한 num개 지점에 대한 배열 생성
 - `np.iinfo(type=)`: int, float 데이터 타입의 표현 가능한 수의 한계를 반환
 - `np.linalg.solve(a, b)`: 선형 연립 방정식 풀이(a: 계수, b: 상수) 
