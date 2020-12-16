@@ -29,7 +29,7 @@ next(iterator) # 0, 1, 2, ... , 9 / 마지막 이후에는 StopIteration
 ```
 - `all()`: iterable 객체의 모든 원소가 True인 경우 True
 - `any()`: iterable 객체의 적어도 한 원소가 True인 경우 True
-- `yield`: generator에 활용
+- `yield`: generator에 활용. 쥐고 있던 원소를 다 털어내면 아무 값도 뱉지 않고 에러도 나지 않음
 ```python
 def gen():
     ls = range(10)
