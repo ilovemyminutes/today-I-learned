@@ -62,7 +62,11 @@
 ## DL
 ### Preprocessing
 * Batch Normalization
-  
+
+## Attitude
+* 무식한 접근이 나을 때도 꽤 많다.
+* 디버깅 대충하지 말 것
+
 ## Reference
 - [Name Mangling](https://thepassion.tistory.com/61)
 - [Categorical Value Encoding 과 Mean Encoding](https://dailyheumsi.tistory.com/120)
