@@ -16,8 +16,8 @@
 #### Encoding
 <details>
 <summary> One-Hot Encoding </summary>
-  - 👍: 쉬운 구현  
-  - 👎: 차원의 저주, 0과 1로만 구성되어 낮은 정보 이득, tree의 경우 Depth만 깊어지는 참사, RF의 SubSampling 사용시 One-Hot 피쳐만 추출될 수 있음
+- 👍: 쉬운 구현  \n
+- 👎: 차원의 저주, 0과 1로만 구성되어 낮은 정보 이득, tree의 경우 Depth만 깊어지는 참사, RF의 SubSampling 사용시 One-Hot 피쳐만 추출될 수 있음
 </details>
 * Label Encoding
   - 👍: 모델 학습 시 One-Hot Encoding보다 빠름
