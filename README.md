@@ -6,7 +6,17 @@
   - 함수를 선언하거나 전역 변수 등을 선언했을 때 컴파일 단계에서 일정한 규칙을 갖고 변경되는 것
   - Linker가 다른 Scope에 있는 같은 이름의 함수와 변수에 대해 구별할 수 있도록 하는 요소로, 컴파일러 입장에서 중요한 작업
   - 컴파일러는 함수에 대하여 함수의 이름, 파라미터 타입, Calling Convention 등을 사용하여 이름을 생성
-  
+
+* NumPy
+- `np.iinfo(type=)`: int, float 데이터 타입의 표현 가능한 수의 한계를 반환
+
+* Pandas
+- `pd.Categorical`: 컬럼 속성을 Categorical로 변환. Label Encoding을 진행할 떄 유용.
+  ```python
+  temp = pd.Series([10,20,30,20,10]).to_frame('cat')
+  temp['cat'] = pd.Categorical(temp['cat'])
+  temp['cat_ID'] = temp['cat'].cat.codes
+  ```
 ## ML
 ### Model
 #### Time-Series
@@ -15,14 +25,14 @@
 ### Feature Engineering
 #### Encoding
 <details>
-<summary> One-Hot Encoding </summary>
+<summary>One-Hot Encoding</summary>
 👍: 쉬운 구현
   
 👎: 차원의 저주, 0과 1로만 구성되어 낮은 정보 이득, tree의 경우 Depth만 깊어지는 참사, RF의 SubSampling 사용시 One-Hot 피쳐만 추출될 수 있음
 </details>
 
 <details>
-<summary> Label Encoding </summary>
+<summary>Label Encoding</summary>
 👍: 모델 학습 시 One-Hot Encoding보다 빠름
 
 👎: Numeric의 함정에 빠질 수 있음. 즉, 선형회귀 모델에 적합하지 않은 방법
@@ -34,7 +44,7 @@
   
 👎: Data Leakage(학습 데이터에는 예측값에 대한 정보가 종속되는 문제), 검증 데이터의 타깃 분포가 학습 데이터와 다르면 과적합 발생
   <details>
-  <summary> 단점 해결 방법 </summary> 
+  <summary>단점 해결</summary> 
   Smoothing
   
   ![](https://latex.codecogs.com/svg.latex?Encoded\,Value(after\,smoothing)%20=%20\frac%20{mean(target)%20*%20nrow%20+%20global\,mean%20*%20\alpha}%20{nrow%20+%20\alpha})
