@@ -14,7 +14,7 @@
 * Data Structure for time-series
 ### Feature Engineering
 #### Encoding
-* One-Hot Encoding
+<summary> One-Hot Encoding </summary>
   - 👍: 쉬운 구현
   - 👎: 차원의 저주, 0과 1로만 구성되어 낮은 정보 이득, tree의 경우 Depth만 깊어지는 참사, RF의 SubSampling 사용시 One-Hot 피쳐만 추출될 수 있음
 * Label Encoding
