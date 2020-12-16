@@ -2,21 +2,22 @@
 본 저장소는 분야에 관계 없이 공부하며 얻은 것들을 정리하는 공간입니다.
 
 ## Programming
-* Name Mangling(=Name Decoration)
-  - 함수를 선언하거나 전역 변수 등을 선언했을 때 컴파일 단계에서 일정한 규칙을 갖고 변경되는 것
-  - Linker가 다른 Scope에 있는 같은 이름의 함수와 변수에 대해 구별할 수 있도록 하는 요소로, 컴파일러 입장에서 중요한 작업
-  - 컴파일러는 함수에 대하여 함수의 이름, 파라미터 타입, Calling Convention 등을 사용하여 이름을 생성
-
-* NumPy
+### Libraries
+#### NumPy | Python
 - `np.iinfo(type=)`: int, float 데이터 타입의 표현 가능한 수의 한계를 반환
-
-* Pandas
+#### Pandas | Python
 - `pd.Categorical`: 컬럼 속성을 Categorical로 변환. Label Encoding을 진행할 떄 유용.
   ```python
   temp = pd.Series([10,20,30,20,10]).to_frame('cat')
   temp['cat'] = pd.Categorical(temp['cat']) # 해당 변수 type이 Categorical이 됨
   temp['cat_ID'] = temp['cat'].cat.codes # 각 클래스별 ID는 cat.codes 인스턴스를 호출하여 구함
   ```
+### Notions
+* Name Mangling(=Name Decoration)
+  - 함수를 선언하거나 전역 변수 등을 선언했을 때 컴파일 단계에서 일정한 규칙을 갖고 변경되는 것
+  - Linker가 다른 Scope에 있는 같은 이름의 함수와 변수에 대해 구별할 수 있도록 하는 요소로, 컴파일러 입장에서 중요한 작업
+  - 컴파일러는 함수에 대하여 함수의 이름, 파라미터 타입, Calling Convention 등을 사용하여 이름을 생성
+  
 ## ML
 ### Model
 #### Time-Series
