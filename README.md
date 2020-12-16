@@ -14,8 +14,8 @@
 - `pd.Categorical`: 컬럼 속성을 Categorical로 변환. Label Encoding을 진행할 떄 유용.
   ```python
   temp = pd.Series([10,20,30,20,10]).to_frame('cat')
-  temp['cat'] = pd.Categorical(temp['cat'])
-  temp['cat_ID'] = temp['cat'].cat.codes
+  temp['cat'] = pd.Categorical(temp['cat']) # 해당 변수 type이 Categorical이 됨
+  temp['cat_ID'] = temp['cat'].cat.codes # 각 클래스별 ID는 cat.codes 인스턴스를 호출하여 구함
   ```
 ## ML
 ### Model
