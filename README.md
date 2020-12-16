@@ -1,4 +1,4 @@
-# ✔iloveWIKI
+# ✔ilovemyWIKI
 본 저장소는 분야에 관계 없이 공부하며 얻은 것들을 정리하는 공간입니다.
 
 ## Programming
