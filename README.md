@@ -77,6 +77,9 @@ for i in range(temp):
 ### Preprocessing
 * Batch Normalization
 
+## XAI
+### SHAP
+
 ## Attitude
 * 헷갈리는 함수 인지
 * 무식한 접근이 나을 때도 많다.
