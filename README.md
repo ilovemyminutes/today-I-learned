@@ -9,18 +9,27 @@
 - `np.linspace(start, stop, num)`: 구간 [start, stop]을 균등하게 분할한 num개 지점에 대한 배열 생성
 - `np.iinfo(type=)`: int, float 데이터 타입의 표현 가능한 수의 한계를 반환
 - `np.linalg.solve(a, b)`: 선형 연립 방정식 풀이(a: 계수, b: 상수) 
-- `arr.ndim`: 객체의 차원 반환
-- `arr.itemsize`: 배열 내 자료형 메모리 크기(byte)
-- `arr.size`: 배열 내 성분 개수
+- `배열.ndim`: 객체의 차원 반환
+- `배열.itemsize`: 배열 내 자료형 메모리 크기(byte)
+- `배열.size`: 배열 내 성분 개수
 - 32bit 배열 + 64bit 배열: 결과값은 64bit 배열
 #### Pandas | Python
 - `pd.Categorical`: 컬럼 속성을 Categorical로 변환. Label Encoding을 진행할 떄 유용.
+  
   ```python
   temp = pd.Series([10,20,30,20,10]).to_frame('cat')
   temp['cat'] = pd.Categorical(temp['cat']) # 해당 변수 type이 Categorical이 됨
   temp['cat_ID'] = temp['cat'].cat.codes # 각 클래스별 ID는 cat.codes 인스턴스를 호출하여 구함
   ```
-#### Standard
+#### datatime | Python
+
+* `from datetime import datetime as dt` 로 사용하는게 편리
+
+* `dt.strptime(date_string, format)`
+* `dt.timedelta(hours, seconds, days=)` : datetime 객체에 시차를 주고자 할 때 사용
+
+#### Essential
+
 - `iter()`: iterable 객체를 iterator로 변환. `next()` 함수를 통해 iterating이 가능ㅏ
 ```python
 iterable_ = range(10)
@@ -76,9 +85,6 @@ for i in range(temp):
 ## DL
 ### Preprocessing
 * Batch Normalization
-
-## XAI
-### SHAP
 
 ## Attitude
 * 헷갈리는 함수 인지
