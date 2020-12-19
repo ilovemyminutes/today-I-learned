@@ -5,13 +5,28 @@
 ### Libraries
 #### NumPy | Python
 - `np.random.rand(d1, d2, ... , dn)`: n차원 배열 생성. 각 값은 \[0, 1)
+
 - `np.arange(start, stop, step)`: `range()`와 같은 역할 + 실수값의 step 사용 가능
+
 - `np.linspace(start, stop, num)`: 구간 [start, stop]을 균등하게 분할한 num개 지점에 대한 배열 생성
+
 - `np.iinfo(type=)`: int, float 데이터 타입의 표현 가능한 수의 한계를 반환
+
 - `np.linalg.solve(a, b)`: 선형 연립 방정식 풀이(a: 계수, b: 상수) 
+
+- `np.vectorize(func)`: 함수를 element-wise하게 활용될 수 있도록 변환
+
+    ```python
+    >>> np.vectorize(lambda x: x-1)(np.array([1, 2, 3])) # 원소 하나에 대해 1을 빼는 연산 실행
+    array([0, 1, 2])
+    ```
+
 - `배열.ndim`: 객체의 차원 반환
+
 - `배열.itemsize`: 배열 내 자료형 메모리 크기(byte)
+
 - `배열.size`: 배열 내 성분 개수
+
 - 32bit 배열 + 64bit 배열: 결과값은 64bit 배열
 #### Pandas | Python
 - `pd.Categorical`: 컬럼 속성을 Categorical로 변환. Label Encoding을 진행할 떄 유용.
