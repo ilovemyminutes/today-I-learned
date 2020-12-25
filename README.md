@@ -2,7 +2,6 @@
 본 저장소는 분야에 관계 없이 공부하며 얻은 것들을 정리하는 공간입니다.
 
 ## Programming
-### Libraries
 #### NumPy | Python
 - `np.random.rand(d1, d2, ... , dn)`: n차원 배열 생성. 각 값은 \[0, 1)
 
@@ -43,7 +42,7 @@
 * `dt.strptime(date_string, format)`
 * `dt.timedelta(hours, seconds, days=)` : datetime 객체에 시차를 주고자 할 때 사용
 
-#### Essential
+#### Essential | Python
 
 - `iter()`: iterable 객체를 iterator로 변환. `next()` 함수를 통해 iterating이 가능ㅏ
 ```python
@@ -98,8 +97,23 @@ for i in range(temp):
 #### Dimension Reduction
 
 ## DL
+
+### Model
+
+#### RNN | TensorFlow
+
+* Input Shape: (batch_size, time steps, input length)
+
 ### Preprocessing
 * Batch Normalization
+
+### 
+
+
+
+* Loss function
+    * Custom Loss
+        * [Stock Price Prediction](https://towardsdatascience.com/customize-loss-function-to-make-lstm-model-more-applicable-in-stock-price-prediction-b1c50e50b16c)
 
 ## Attitude
 * 헷갈리는 함수 인지
