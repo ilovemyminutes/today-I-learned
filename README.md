@@ -42,7 +42,7 @@
 * `dt.strptime(date_string, format)`
 * `dt.timedelta(hours, seconds, days=)` : datetime 객체에 시차를 주고자 할 때 사용
 
-#### Essential | Python
+#### Essentials | Python
 
 - `iter()`: iterable 객체를 iterator로 변환. `next()` 함수를 통해 iterating이 가능ㅏ
 ```python
@@ -63,7 +63,27 @@ for i in range(temp):
     print(i) # 0, 1, 2, ... , 9
 ```
 
+* `global`, `nonlocal`: 지역변수를 전역변수에 영향줄 수 있도록 해주는 명령어
+
+    * `global`: 함수 내 함수로 겹겹이 쌓이더라도, `global`이 사용된 지역변수는 전역변수로 연결. 권장되지 않는 명령어
+
+    * `nonlocal`: 사용된 함수의 바로 한 단계 바깥에 위치한 변수와 바인딩
+
+        * 함수를 한 개 정의하고 전역변수에 영향을 주는 것은 불가능
+
+            ```python
+            x = 70
+            def foo():
+                nonlocal x
+                x = 140
+            foo()
+            print(x) # SyntaxError: no binding for nonlocal 'x' found
+            ```
+
+    * Reference. https://devbruce.github.io/python/py-13-global,nonlocal/
+
 ### Notions
+
 * Name Mangling(=Name Decoration)
   - 함수를 선언하거나 전역 변수 등을 선언했을 때 컴파일 단계에서 일정한 규칙을 갖고 변경되는 것
   - Linker가 다른 Scope에 있는 같은 이름의 함수와 변수에 대해 구별할 수 있도록 하는 요소로, 컴파일러 입장에서 중요한 작업
@@ -102,7 +122,8 @@ for i in range(temp):
 
 #### RNN | TensorFlow
 
-* Input Shape: (batch_size, time steps, input length)
+* Input Shape: (batch size, time steps, input length)
+* `TimeDistributed`: 각 time에서 출력된 output을 내부에 선언해준 layer와 연결해주는 역할
 
 ### Preprocessing
 * Batch Normalization
@@ -119,6 +140,8 @@ for i in range(temp):
 * 헷갈리는 함수 인지
 * 무식한 접근이 나을 때도 많다.
 * 디버깅 대충하지 말 것
+* 함수 내에 함수를 구성하는 걸 껄끄럽게 생각하지 말자
+* 컴퓨터 언어도 언어임. 국룰을 따르자.
 
 ## Reference
 - [Name Mangling](https://thepassion.tistory.com/61)
