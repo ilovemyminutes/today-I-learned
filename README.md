@@ -93,12 +93,12 @@ for i in range(temp):
           self.temp1 = temp1
           self.temp2 = temp2
   
-      def foo2(self):
-          return self.temp1 + self.temp2
-  
       @classmethod
       def foo(cls, double):
           return cls(double, double)
+      
+      def foo2(self):
+          return self.temp1 + self.temp2
   
   origin = Store(1,2)
   print(origin.foo2()) # 1 + 2 = 3
