@@ -79,7 +79,45 @@ for i in range(temp):
   - 함수를 선언하거나 전역 변수 등을 선언했을 때 컴파일 단계에서 일정한 규칙을 갖고 변경되는 것
   - Linker가 다른 Scope에 있는 같은 이름의 함수와 변수에 대해 구별할 수 있도록 하는 요소로, 컴파일러 입장에서 중요한 작업
   - 컴파일러는 함수에 대하여 함수의 이름, 파라미터 타입, Calling Convention 등을 사용하여 이름을 생성
+  
 * (Python)for문은 iterable 객체의 __next__() 메소드를 호출하는 역할을 수행
+
+* 클래스 메서드 | Python
+
+  * 인스턴스 메서드와 달리 self 인자를 전달하는 것이 아닌 cls(클래스 자기 자신)을 전달
+  * 인스턴스 메서드는 인스턴스에 국한하여 데이터를 사용하나, 클래스 메서드는 인스턴스가 공유하는 클래스 데이터 활용 가능
+
+  ```python
+  class Store:
+      def __init__(self, temp1, temp2):
+          self.temp1 = temp1
+          self.temp2 = temp2
+  
+      def foo2(self):
+          return self.temp1 + self.temp2
+  
+      @classmethod
+      def foo(cls, double):
+          return cls(double, double)
+  
+  origin = Store(1,2)
+  print(origin.foo2()) # 1 + 2 = 3
+  
+  shared = origin.foo(3) # 내부 인스턴스를 변경한 채로 새로운 객체에 할당
+  print(shared.foo2()) # 3 + 3 = 6
+  ```
+
+  
+## Data Visualization
+
+### Matplotlib
+
+
+
+### Seaborn
+
+
+
 ## ML
 ### Model
 #### Time-Series
@@ -104,9 +142,6 @@ for i in range(temp):
       - CV Loop
       - Expanding Mean
       
-#### Basis Expansion
-#### Dimension Reduction
-
 ## DL
 
 ### Model
