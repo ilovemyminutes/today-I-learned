@@ -33,6 +33,27 @@
 * `dt.strptime(date_string, format)`
 * `dt.timedelta(hours, seconds, days=)` : datetime 객체에 시차를 주고자 할 때 사용
 
+#### matplotlib | Python
+
+* 가상환경에서 글꼴 변경
+
+* 다음과 같이 코드별로 글꼴 정보를 입력하여 변경. 가상환경에서 전사적인 변경 방법은 아직 찾지 못함
+
+  ```python
+  path = './fonts/AppleSDGothicNeoM.ttf'
+  fontprop = fm.FontProperties(fname=path, size=18)
+  plt.rc('font', family=font_name)
+  
+  plt.title('한글 제목', fontproperties=fontprop)
+  plt.show()
+  ```
+
+  
+
+
+
+
+
 #### Essentials | Python
 
 - `iter()`: iterable 객체를 iterator로 변환. `next()` 함수를 통해 iterating이 가능ㅏ
@@ -72,6 +93,11 @@ for i in range(temp):
             ```
 
     * Reference. https://devbruce.github.io/python/py-13-global,nonlocal/
+    
+* pyenv와 virtualenv는 다른 개념이다.
+
+    * pyenv: 로컬 파이썬과 별개의 파이썬 버전을 마련하는 것
+    * virtualenv: 기존 파이썬 패키지 폴더와 독립적인 파이썬 패키지 폴더를  마련하는 것. venv 간 파이썬 버전을 공유할 수 있음
 
 ### Notions
 
