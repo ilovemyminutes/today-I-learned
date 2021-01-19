@@ -4,4 +4,4 @@
 
 Day 1. [파이썬/AI 개발환경 준비하기](https://github.com/iloveslowfood/iloveCookBook/blob/main/NAVERBoostcamp/daily_reports/Day001.md)
 
-Day 2. 파이썬 기초 문법
+Day 2. [파이썬 기초 문법](https://github.com/iloveslowfood/iloveCookBook/blob/main/NAVERBoostcamp/daily_reports/Day002.md)
