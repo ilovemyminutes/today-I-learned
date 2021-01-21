@@ -123,6 +123,10 @@ for i in range(temp):
 
     * pyenv: 로컬 파이썬과 별개의 파이썬 버전을 마련하는 것
     * virtualenv: 기존 파이썬 패키지 폴더와 독립적인 파이썬 패키지 폴더를  마련하는 것. venv 간 파이썬 버전을 공유할 수 있음
+    
+* `string.isalnum()`: 문자열이 영어, 한글 또는 숫자로 구성되어 있으면 True, 아니면 False
+
+* `string.isalpha()`: 문자열이 영어 또는 한글로 구성되어 있으면 True, 아니면 False
 
 ### Notions
 
