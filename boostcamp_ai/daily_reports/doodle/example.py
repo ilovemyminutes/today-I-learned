@@ -58,29 +58,30 @@
 # print(args.aa + args.b)
 
 
-import csv
+# import csv
 
-buk_chon_ro = []
-header = []
-rownum = 0
+# buk_chon_ro = []
+# header = []
+# rownum = 0
 
-with open('seoul_bukchon_floating_pop.csv', 'r', encoding='CP949') as p_file:
-    csv_data = csv.reader(p_file)
-    for row in csv_data:
-        if rownum == 0:
-            header = row[0]
-        location = row[7]
+# with open('seoul_bukchon_floating_pop.csv', 'r', encoding='CP949') as p_file:
+#     csv_data = csv.reader(p_file)
+#     for row in csv_data:
+#         if rownum == 0:
+#             header = row[0]
+#         location = row[7]
 
-        if location.find(u'북촌로') != -1:
-            buk_chon_ro.append(row)
+#         if location.find(u'북촌로') != -1:
+#             buk_chon_ro.append(row)
 
-        rownum += 1
+#         rownum += 1
 
-with open('seoul_bukchon_floating_pop.csv', 'w', encoding='utf8') as s_file:
-    writer = csv.writer(s_file,
-    delimiter='\t', # 불러올 파일의 구분자
-    quotechar="'", # quotation 방법 지정
-    quoting=csv.QUOTE_ALL)
-    writer.writerow(header)
-    for row in buk_chon_ro:
-        writer.writerow(row)
+# with open('seoul_bukchon_floating_pop.csv', 'w', encoding='utf8') as s_file:
+#     writer = csv.writer(s_file,
+#     delimiter='\t', # 불러올 파일의 구분자
+#     quotechar="'", # quotation 방법 지정
+#     quoting=csv.QUOTE_ALL)
+#     writer.writerow(header)
+#     for row in buk_chon_ro:
+#         writer.writerow(row)
+
