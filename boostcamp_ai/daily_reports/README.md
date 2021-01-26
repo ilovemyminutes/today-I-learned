@@ -15,3 +15,6 @@
 ## Week02. AI Math
 
 - Day 6. [NumPy / 벡터 / 행렬](https://github.com/iloveslowfood/iloveCookBook/blob/main/boostcamp_ai/daily_reports/Day006.md)
+
+- Day 7. [경사하강법](https://github.com/iloveslowfood/iloveCookBook/blob/main/boostcamp_ai/daily_reports/Day007.md)
+
