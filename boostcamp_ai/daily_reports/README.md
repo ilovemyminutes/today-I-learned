@@ -12,6 +12,8 @@
 - Day 4. [파이썬 기초 문법 III](https://github.com/iloveslowfood/iloveCookBook/blob/main/boostcamp_ai/daily_reports/Day004.md)
 - Day 5. [파이썬으로 데이터 다루기](https://github.com/iloveslowfood/iloveCookBook/blob/main/boostcamp_ai/daily_reports/Day005.md)
 
+
+
 ## Week02. AI Math
 
 - Day 6. [NumPy / 벡터 / 행렬](https://github.com/iloveslowfood/iloveCookBook/blob/main/boostcamp_ai/daily_reports/Day006.md)
