@@ -1,6 +1,6 @@
-# README
+# NAVER CONNECT Boostcamp AI Tech
 
-본 디렉토리는 일일 학습 내용을 정리·기록하는 공간입니다.
+본 디렉토리는 네이버 커넥트재단 AI Tech 교육 동안 학습한 내용을 정리하는 공간입니다.
 
 
 
