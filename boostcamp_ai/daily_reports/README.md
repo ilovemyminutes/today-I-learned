@@ -21,3 +21,10 @@
 - Day 8. [Pandas I / 딥러닝 학습방법 이해하기](https://github.com/iloveslowfood/iloveCookBook/blob/main/boostcamp_ai/daily_reports/Day008.md)
 - Day 9. [Pandas II / 확률론 맛보기](https://github.com/iloveslowfood/iloveCookBook/blob/main/boostcamp_ai/daily_reports/Day009.md)
 - Day 10. [시각화 / 통계학](https://github.com/iloveslowfood/iloveCookBook/blob/main/boostcamp_ai/daily_reports/Day010.md)
+
+
+
+## Week03. DL Basic
+
+- Day 11. [딥러닝 기초](https://github.com/iloveslowfood/iloveCookBook/blob/main/boostcamp_ai/daily_reports/Day011.md)
+
