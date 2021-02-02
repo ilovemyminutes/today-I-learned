@@ -1,0 +1,375 @@
+# Day 12. 최적화, CNN 기초 | 최성준, 임성빈 교수님
+
+> Optimization
+
+Gradient Descent
+
+- First-order iterative optimzation algorithm for finding a local minimum of a differentiable function
+
+- 최소화하기 위한 Loss 함수가 존재하고 찾고자 하는 파라미터를 Loss 함수에 대한 편미분을 활용하여 구함. 
+
+최적화를 위한 핵심 컨셉
+
+- Generalization
+- Under-fitting vs. over-fitting
+- Cross validation
+- Bias-variance tradeoff
+- Bootstrapping
+- Bagging and boosting
+
+Generalization: *일반화 성능을 높이는 것*
+
+- 일반화: "모델이 좋은 generalization performance를 보인다" = "학습 데이터와 테스트 데이터 간 성능 차이가 별로 안난다"
+
+  <div style="text-align:center"> <img src="C:\Users\iloveslowfood\AppData\Roaming\Typora\typora-user-images\image-20210202105146430.png" alt="image-20210202105146430" style="zoom:67%;" /> </div> 
+
+- 학습 데이터와 테스트 데이터 간 성능 차이에 주목할 뿐, 모델의 성능이 좋고 나쁨을 얘기하는 것이 아님
+
+Underfitting vs. Overfitting
+
+- Overfitting: 학습 데이터는 잘 맞추는데, 테스트 데이터는 잘 맞추지 못함
+- Underfitting: 학습 데이터와 테스트 데이터 모두 잘 맞추지 못함
+
+<div style='text-align:center'><img src="C:\Users\iloveslowfood\AppData\Roaming\Typora\typora-user-images\image-20210202105430965.png" alt="image-20210202105430965" style="zoom:67%;" /></div>
+
+- 이론적일 뿐. 어쩌면 위 그림의 Overfitting의 분포가 실제 타깃변수의 분포일 수도 있는 법이니.
+
+Cross-validation
+
+- 데이터를 train, validation 데이터로 나누어서 학습/검증을 진행할텐데, 이 비율은 어떻게 나눌까? => 기준이 모호함
+  => Cross-validation을 활용하여 이러한 모호함을 보정함
+
+- 데이터를 train, validation, test 데이터로 분할
+
+  - validation 데이터는 모델 파라미터를 튜닝하는 데 활용됨
+
+  - test 데이터는 학습에 아예 일절 관여하지 않는 데이터
+
+  - 데이터를 k개의 fold로 나누어서 train, validation 데이터의 구조를 변경
+
+    <div style="text-align:center"><img src="C:\Users\iloveslowfood\AppData\Roaming\Typora\typora-user-images\image-20210202110055915.png" alt="image-20210202110055915" style="zoom:67%;" /></div>
+
+    
+
+- 인공신경망 학습에 하이퍼 파라미터를 찾기 위해 Cross-validation을 활용
+
+  - train, validation 데이터를 활용하여 하이퍼 파라미터를 찾음
+  - test 데이터를 활용한 최종 검증
+  - 하이퍼 파라미터가 정해진 뒤에는 최고 성능의 학습을 위해 모든 데이터를 갖고 최종 학습을 진행
+  - test 데이터는 어떤 식으로든 활용되어서는 안됨
+
+Bias and Variance
+
+<div style="text-align:center"><img src="C:\Users\iloveslowfood\AppData\Roaming\Typora\typora-user-images\image-20210202110656584.png" alt="image-20210202110656584" style="zoom: 67%;" /></div>
+
+
+
+- Variance: 입력이 주어졌을 때, 출력이 얼마나 일관적인가
+
+- Bias: 실제 타깃값에 평균적으로 얼마나 가까운가
+
+- Bias and Variance Tradeoff
+  - <img src="https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle+Given+%5C%2C%5C%2C+D+%3D+%5C%7B%28x_%7Bi%7D%2C+%5C%2C+t_%7Bi%7D%29%5C%7D_%7Bi%3D1%7D%5E%7BN%7D%2C+%5C%2C%5C%2C+where+%5C%2C%5C%2C+t+%3D+f%28x%29+%2B+e+%5C%2C%5C%2Cand+%5C%2C%5C%2C+e+%5Csim+N%280%2C+%5Csigma%5E2%29">  
+
+  - We can derive that what we are minimizing(cost) and be decomposed into three different parts: bias^2, variance, land noise
+
+  - 각각을 최소화하는 것이 아니라, 어떤 것 하나를 최소화 하면 다른 것의 값은 커질 수 밖에 없다는 정리
+
+  - 근본적으로 데이터에 노이즈가 껴있으면, 모든 term을 줄이는 것은 불가능
+
+    <div style="text-align:center"><img src="C:\Users\iloveslowfood\AppData\Roaming\Typora\typora-user-images\image-20210202111557521.png" alt="image-20210202111557521" style="zoom:67%;" /></div>
+
+    
+
+Bootstrapping
+
+- any test or metric that uses random sampling with replacement
+- "*신발끈을 들어서 나 자신을 들어보겠다*" 허무맹랑한 야망
+- 데이터의 일부만을 가져와서 모델 만들고, 또 만들고, 또 만들고
+  - 각각의 모델이 다른 예측값을 뱉는 경우가 많겠지
+  - 모델들의 전제적인 불확실성(uncertainty)을 조정하는 데 활용될 수 있음!
+
+Bagging vs. Boostring
+
+- Bagging(Bootstrapping aggregating)
+  - 랜덤 subsampling을 통해 여러 데이터를 추출. 여러 모델을 학습
+    - 여러 모델의 output의 평균을 내는 등 aggregation(앙상블)을 통해 최종 예측
+    - subsample로 여러 모델을 만드는게, 모든 데이터로 단일 모델을 만드는 것보다 성능이 좋은 경우가 많음
+- Boosting
+  - 순차적으로 모델을 생성하는 방법
+  - 데이터에 대한 간단한 모델(weak learner)을 만들고, 모델이 잘 예측하지 못한 데이터에 대해 높은 가중을 두고 다음 모델 학습
+  - make weak learner sequential => strong learner!
+
+Batch-size Matters
+
+- 배치 사이즈가 그리 중요하지 않은 파라미터로 생각할 수 있지만, 매우 중요함!!
+
+- 일반적으로 배치사이즈를 작게 쓰는게 좋다.
+
+  - 큰 배치를 활용하게 되면, sharp minimizer에 도달하게 됨
+
+  - 작은 배치를 활용하게 되면, flat minimizer에 도달하게 됨
+
+  - Reference. On Large-Batch Training for Deep Learning: Generalization Gap and Sharp Minima
+
+    <div style="text-align:center"><img src="C:\Users\iloveslowfood\AppData\Roaming\Typora\typora-user-images\image-20210202112903261.png" alt="image-20210202112903261" style="zoom:67%;" /></div>
+
+    
+
+  - sharp minimizer에 도달하면, 조금만 벗어나도 예측이 많이 어긋날 수 있고, flat minimizer에 도달하면, 조금 벗어나도 예측이 크게 벗어나지 않을 수 있음
+
+Practical Gradient Descent Methods
+
+- Stochastic gradient descent
+  - 1개의 샘플에 대해서 그레디언트를 계산/업데이트
+- Mini-batch gradient descent
+  - 서브샘플에 대해서 그레디언트를 계산/업데이트
+- Batch gradient descent
+  - 모든 데이터에 대해서 그레디언트를 계산/업데이트
+
+Gradient Methods(SGD)
+
+<img src='https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle+W_%7Bt%2B1%7D+%5Cleftarrow+W_%7Bt%7D+-+%5Ceta+g_%7Bt%7D%5C%2C%2C%5C%2C%5C%2C+%5Ceta%3A+Learning%5C%2C%5C%2Crate%2C+%5C%2C%5C%2C+g_%7Bt%7D%3A+Gradient'>
+
+- 단점: Learning rate를 잡는 것이 고역
+  - 또한, 가령 1만개 데이터 중 배치 사이즈를 64로 잡고 학습했을 때, 이전 배치의 그레디언트를 기억하고 있지 못하니, 자칫 데이터로부터 사소한 특징만을 뽑아낼 수 있음
+  - 많은 iteration이 있어야 전체 데이터에 대한 특징을 추출할 수 있게 되어 비효율적
+  - Momentum: 이전 정보를 어느 정도 기억하고 학습이 진행되기 때문에 훨씬 효율적인 학습이 가능
+- 이걸 해결하기 위한 여러 최적화 기법이 등장
+
+Momentum
+
+<div style="text-align:center"><img src="C:\Users\iloveslowfood\AppData\Roaming\Typora\typora-user-images\image-20210202114050555.png" /></div>
+
+- momentum β 하이퍼 파라미터가 포함. g라는 그레디언트가 들어왔을 때, a(accumulation) 항을 활용하여 weight를 업데이트
+- 장점: 한 번 특정 방향으로 흘러간 그레이언트를 어느 정도 유지시키기 때문에 학습이 안정적으로 유지됨
+
+Nesterov Accelerated Gradient
+
+<div style="text-align:center"><img src="C:\Users\iloveslowfood\AppData\Roaming\Typora\typora-user-images\image-20210202114034653.png" /></div>
+
+- Lookahead gradient: 현재 정보가 주어질 떄, 일단 특정 방향으로 이동해 봄. 이동한 지점에서 그레디언트 값을 구하고, 이를 weight에 반영 
+- 이론적으로 수렴 속도가 더 빠름
+- 이 친구는 좀더 찾아봐야겠다...
+
+Adagrad
+
+<div style="text-align:center"><img src="C:\Users\iloveslowfood\AppData\Roaming\Typora\typora-user-images\image-20210202114548293.png" /></div>
+
+- 인공신경망의 파라미터가 지금까지 얼마나 변했는지를 고려하여 갱신
+- 많이 변한 파라미터는 조금만 변화시키고, 조금 변한 파라미터는 많이 변화시기게 됨
+- 단점: G가 무한으로 가게 되면 업데이트할 값이 0으로 수렴하는 문제 발생(monotonically decreasing the learning rate)
+
+Adadelta
+
+<div style="text-align:center"><img src="C:\Users\iloveslowfood\AppData\Roaming\Typora\typora-user-images\image-20210202114709323.png" /></div>
+
+- Adagrad의 단점을 보완해보겠다
+- exponential moving average를 활용
+- 단점: learning rate가 없어 조정이 어렵기 때문에 잘 활용되지는 않음
+
+RMSprop
+
+- 논문에 의해 제안된 최적화방법은 아님
+
+  <div style="text-align:center"><img src="C:\Users\iloveslowfood\AppData\Roaming\Typora\typora-user-images\image-20210202115012282.png" /></div>
+
+- Adadelta에 learning rate를 추가한 형태
+
+Adam
+
+- 가장 무난하게 사용하는 최적화 기법
+
+- gradient squares의 EMA와 Momentum을 함께 활용하는 방법
+
+  <div style="text-align:center"><img src="C:\Users\iloveslowfood\AppData\Roaming\Typora\typora-user-images\image-20210202115203686.png" /></div>
+
+  - 하이퍼 파라이터
+    - β1: 모멘텀을 얼마나 유지할 것인가
+    - β2: 그레디언트 squares의 EMA에 대한 정보
+    - η: learning rate
+    - ε: zero division 문제를 방지하기 위한 값인데, 이 값을 조정해주는 것도 중요
+    - 이 파라미터를 만져주는 것도 굉장히 중요!
+
+Regularization
+
+- 모델의 generalization을 위한 방법: *학습을 방해하는 방법*
+
+- 모델이 학습 데이터뿐 아니라 테스트 데이터에서도 잘 동작하도록 하는 방법
+
+- Early Stopping
+
+  <div style="text-align:center"><img src="C:\Users\iloveslowfood\AppData\Roaming\Typora\typora-user-images\image-20210202115725628.png" alt="image-20210202115725628" style="zoom:80%;" /></div>
+
+  
+
+  - validation loss가 높아지는 시점에 학습 조기 종료
+
+- Parameter Norm Panelty
+
+  -  인공신경망의 파라미터가 너무 커지지 않도록 함
+
+    <div style="text-align:center"><img src="C:\Users\iloveslowfood\AppData\Roaming\Typora\typora-user-images\image-20210202115833283.png" /></div>
+
+  - Norm 항을 Loss 함수에 추가하여 Norm 길이까지 줄이도록 규제를 걸어두는 것
+
+- Data Augmentation
+
+  - 데이터는 클 수록 좋다. 데이터가 적으면 딥러닝보다 머신러닝이 효과가 좋은 경우가 많음
+
+  - 한정된 데이터 자원에 몇몇 변화를 주어서 데이터를 증강함
+
+    <div style="text-align:center"><img src="C:\Users\iloveslowfood\AppData\Roaming\Typora\typora-user-images\image-20210202120036164.png" /></div>
+
+  - 뒤집거나 회전하거나 등등
+
+- Noise Robustness
+
+  - 입력데이터 또는 모델의 weight에 노이즈를 추가하여 학습 진행
+
+- Label Smoothing
+
+  - 학습 데이터를 2개를 뽑아서 섞어 학습 진행(label이 단일적이지 않겠지)
+
+    <div style="text-align:center"><img src="C:\Users\iloveslowfood\AppData\Roaming\Typora\typora-user-images\image-20210202120308642.png" /></div>
+
+    - Mixup: 데이터를 겹치는 것
+    - Cutout:  데이터의 일정 부분을 제거
+    - CutMix: 데이터의 일정 부분을 잘라 다른 레이블의 데이터로 채움
+
+  - Decision Boundary가 smooth하게 되는 효과가 있다고 함
+
+    <div style="text-align:center"><img src="C:\Users\iloveslowfood\AppData\Roaming\Typora\typora-user-images\image-20210202120424784.png" /></div>
+
+  - 이유는 정확히 밝혀지지 않았으나 성능이 진짜 많이 올라간다고 함
+
+- Dropout
+
+  - 인공신경망 파라미터 일부의 weight를 0으로 변환
+  - 각 뉴런들이 robust한 feature를 얻을 수 있음(이론적 증명X)
+
+- Batch Normalization
+
+  - 적용하고자 하는 레이어의 모수를 정규화하는 것
+
+  - 예: 1000개의 파라미터를 가진 레이어의 파라미터를 평균이 0, 분산이 1이 되도록 range를 바꾸는 것
+
+  - 일반적으로 성능이 올라감. 특히 레이어가 깊어질 수록
+
+  - BN 아이디어에 기인한 다른 방법도 파생됨
+
+    <div style="text-align:center"><img src="C:\Users\iloveslowfood\AppData\Roaming\Typora\typora-user-images\image-20210202121011351.png" /></div>
+
+    - Batch Norm: 레이어 전체에 대한 normalize
+    - Layer Norm: 각각의 레이어 정보를 줄임[?]
+    - Instance Norm: 데이터 1개별로 normalize
+    - Group Norm: 데이터 그룹별 normalize
+    - Reference. Group Normalization
+
+> CNN 첫걸음
+
+Convolution 연산 이해하기
+
+- 기존의 MLP: <img src='https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle+h_%7Bi%7D+%3D+%5Csigma+%28%5Csum_%7Bj%3D1%7D%5E%7Bp%7D+W_%7Bij%7D+x_%7Bj%7D%29'>  (W: 가중치 행렬)
+
+  <div style="text-align:center"><img src="C:\Users\iloveslowfood\AppData\Roaming\Typora\typora-user-images\image-20210202160241154.png" alt="image-20210202160241154" style="zoom:67%;" /></div>
+
+  - W의 i번째 행과 x를 활용하여 i번째 h값을 구하는 형태
+  - i가 바뀌면 가중치도 변하는 형태이므로, 데이터가 커질수록(변수가 많아질 수록) 큰 W 행렬(=더 많은 파라피터)이 필요함
+
+- Convolution 연산: <img src='https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle+h_%7Bi%7D+%3D+%5Csigma+%28%5Csum_%7Bj%3D1%7D%5E%7Bk%7D+V_%7Bj%7D+x_%7Bi+%2B+j+-1%7D%29'>  (k: 커널 사이즈, V: 가중치 행렬)
+
+  <div style="text-align:center"><img src="C:\Users\iloveslowfood\AppData\Roaming\Typora\typora-user-images\image-20210202160301704.png" alt="image-20210202160301704" style="zoom:67%;" /></div>
+
+  
+
+  - 데이터의 크기(변수의 개수)에 관계 없이 일정한 갯수의 가중치만을 업데이트
+  - 데이터를 한번에 모두 활용하는 것이 아닌, 커널을 이동해나가며 커널의 크기에 맞게 x의 일부만 가져와 학습
+  - i번째 h값은 커널을 i번 움직였을 때 커널의 크기와 같은 x 데이터 일부와의 연산을 통해 구해짐!
+  - 활성화 함수를 제외한 Convolution 연산 또한 선형변환
+  - 수학적인 의미?
+    - signal을 커널을 이용해 국소적으로 증폭 또는 감소시켜 정보를 추출 또는 필터링
+    - 연속형: <img src='https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle+%5Bf+%2A+g%5D%28x%29+%3D+%5Cint_%7BR%5Ed%7D+f%28z%29+g%28x+%2B+z%29+dz++%3D+%5Cint_%7BR%5Ed%7D+f%28x+%2B+z%29+g%28z%29+dz++%3D+%5Bg+%2A+f%5D%28x%29'>  
+    - 이산형: <img src='https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle+%5Bf+%2A+g%5D%28i%29+%3D+%5Csum_%7Ba+%5Cin+Z%5E%7Bd%7D%7D+f%28a%29+g%28i+%2B+a%29+%3D+%5Csum_%7Ba+%5Cin+Z%5E%7Bd%7D%7D+f%28i+%2B+a%29g%28a%29+%3D+%5Bg+%2A+f%5D%28i%29'>  
+      - 공식 명칭은 cross-correlation이고 <img src='https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle+%5Bf+%2A+g%5D%28i%29+%3D+%5Csum_%7Ba+%5Cin+Z%5E%7Bd%7D%7D+f%28a%29+g%28i+-+a%29+%3D+%5Csum_%7Ba+%5Cin+Z%5E%7Bd%7D%7D+f%28i+-+a%29g%28a%29+%3D+%5Bg+%2A+f%5D%28i%29'> 와 같이 더하기가 아닌 빼기 연산이 포함.
+      - 부정적분이기 떄문에 빼기, 더하기 연산에 따라 결과가 달라지지 않으나, 실제 Convolution 연산은 더하기/빼기에 따라 결과가 달라지며 더하기 연산이 맞는 결과값
+    - 커널은 정의역 내에서 움직여도 변하지 않고(translation invariant) 주어진 신호에 국소적(local)으로 적용(=locality가 있다)
+
+영상처리에서 Convolution
+
+- 커널의 종류에 따라 비춰지는 영상의 모습이 많이 달라짐
+
+  <div style="text-align:center"><img src="C:\Users\iloveslowfood\Documents\workspace\iloveCookBook\boostcamp_ai\etc\images\week03\convolution_vision.png" /></div>
+
+다양한 차원에서의 Convolution
+
+- Convolution 연산은 N차원에서 계산 가능
+  - 1차원: <img src='https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle+%5Bf+%2A+g%5D%28i%29+%3D+%5Csum_%7Bp%3D1%7D%5E%7Bd%7D+f%28p%29+g%28i+%2B+p%29'>  
+  - 2차원: <img src='https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle+%5Bf+%2A+g%5D%28i%2C+j%29+%3D+%5Csum_%7Bp%2C+q%7D+f%28p%2C+q%29+g%28i+%2B+p%2C+j%2Bq%29'>  
+  - 3차원: <img src='https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle+%5Bf+%2A+g%5D%28i%2C+j%2C+k%29+%3D+%5Csum_%7Bp%2C+q%2C+r%7D+f%28p%2C+q%2C+r%29+g%28i+%2B+p%2C+j%2Bq%2C+k+%2Br%29'>  
+- 데이터 성격에 따라 사용하는 커널이 달라짐
+- 핵심은, 커널 함수는 위치에 따라 변하지 않는다는 것!
+
+2차원 Convolution 연산 이해하기
+
+- 2D-Conv 연산은 커널(kernel)을 입력벡터 상에서 움직여가면서 선형모델과 합성함수가 적용되는 구조
+
+  <img src='https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle+%5Bf+%2A+g%5D%28i%2C+j%29+%3D+%5Csum_%7Bp%2C+q%7D+f%28p%2C+q%29+g%28i+%2B+p%2C+j%2Bq%29'>
+
+  <div style="text-align:center"><img src="C:\Users\iloveslowfood\AppData\Roaming\Typora\typora-user-images\image-20210202162945267.png" /></div>
+
+- 커널이 계속 이동하며 데이터와 element-wise multiplication, 커널이 갖고 있는 값은 **변하지 않음** 
+
+- 입력 크기를 (H, W), 커널 크기를 <img src='https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle+%28K_%7BH%7D%2C+K_%7BW%7D%29'> , 출력 크기를 <img src='https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle+%28O_%7BH%7D%2C+O_%7BW%7D%29'> 라 하면 출력 크기는 다음과 같이 계산
+
+  <img src='https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle+O_%7BH%7D+%3D+H+-+K_%7BH%7D+%2B+1%2C%5C%2C%5C%2CO_%7BW%7D+%3D+W+-+K_%7BW%7D+%2B+1'>
+
+  - 복잡해보이지만 생각해보면 단순해
+
+- 채널이 여러 개인 2차원 입력(=텐서)의 경우 2차원 Convolution을 채널 개수만큼 적용한다고 생각하면 된다.
+
+  <div style="text-align:center"><img src="C:\Users\iloveslowfood\AppData\Roaming\Typora\typora-user-images\image-20210202163514622.png" alt="image-20210202163514622" style="zoom:80%;" /></div>
+
+  
+
+  - 텐서(3차원 입력)를 2차원 입력이 모인 것으로보고, 각각의 입력에 대해 2차원 Convolution 연산을 진행하는 셈
+
+    <div style="text-align:center"><img src="C:\Users\iloveslowfood\AppData\Roaming\Typora\typora-user-images\image-20210202163637603.png" /></div>
+
+  - 주의: 채널이 여러개인 경우 커널의 채널 수와 입력의 채널 수가 **같아야 한다**
+
+    <div style="text-align:center"><img src="C:\Users\iloveslowfood\AppData\Roaming\Typora\typora-user-images\image-20210202163818405.png" alt="image-20210202163818405" style="zoom:67%;" /></div>
+
+  - 출력 여러 개로 받고 싶다면 **커널의 개수를 늘리면 됨**
+
+    <div style="text-align:center"><img src="C:\Users\iloveslowfood\AppData\Roaming\Typora\typora-user-images\image-20210202163955247.png" alt="image-20210202163955247" style="zoom:67%;" /></div>
+
+    
+
+Convolution 연산의 역전파 이해하기
+
+- Convolution 연산은 커널이 모든 입력데이터에 공통으로 적용되기 때문에 역전파를 계산할 때도 convolution 연산이 등장
+
+  <div style="text-align:center"><img src="C:\Users\iloveslowfood\AppData\Roaming\Typora\typora-user-images\image-20210202164257334.png" alt="image-20210202164257334" style="zoom:67%;" /></div>
+
+- 다음과 같이 이해하면 되겠군!
+
+  <div style="text-align:center"><img src="C:\Users\iloveslowfood\AppData\Roaming\Typora\typora-user-images\image-20210202181940854.png" /></div>
+
+
+
+> Attitude & Tips
+
+- 하이퍼파라미터: 내가 사전에 지정할 수 있는 것(learning rate, loss function, optimizer)
+- 파라미터: 내가 최적화해서 찾고 싶은 값(MLP의 가중치 등)
+- Activation 함수별 효과를 정리합니다.
+- `zero_grad()`, `no_grad()`가 이해가 잘 안감
+- `model_sgd.forward(x_torch).cpu().detach().numpy()` <- `detach()`???
+  - MSE
+    - 오차가 크게 발생하는 지점을 중심으로 학습이 진행되게 됨
+    - 반대로, 말도 안되게 차이가 큰 outlier가 껴있다면 MSE를 채택하지 않는 것이 좋겠지
+- Adam을 사용하는 것이 좋은 이유(=일반적으로 좋은 optimizer를 사용하는 것이 좋은 이유)
+  - 1달 걸릴 학습 시간을 일주일로 줄일 수 있을지 모른다
+  - 모델은 잘 짰는데 optimizer 하나때문에 성능이 잘 안나올 수 있다
+  - 컴퓨터 자원을 많이 사용하는 것도 좋은 선택일 수 있지만, 좋은 옵티마이저를 채택하는게 더욱 효율적일 여지가 큼
+    - epoch을 거듭할 수록 SGD가 Adam보다 성능이 뛰어날 수 있으나, 보편적으로 Adam이 더 빠르게 최적 지점에 도달한다는 점!
