@@ -28,4 +28,5 @@
 
 - Day 11. [딥러닝 기초](https://github.com/iloveslowfood/iloveCookBook/blob/main/boostcamp_ai/daily_reports/Day011.md)
 - Day 12. [최적화, CNN 기초](https://github.com/iloveslowfood/iloveCookBook/blob/main/boostcamp_ai/daily_reports/Day012.md)
+- Day 13. [Convolutional Neural Network](https://github.com/iloveslowfood/iloveCookBook/blob/main/boostcamp_ai/daily_reports/Day013.md)
 
