@@ -31,3 +31,5 @@
 - Day 13. [Convolutional Neural Networks](https://github.com/iloveslowfood/iloveCookBook/blob/main/boostcamp_ai/daily_reports/Day013.md)
 
 - Day 14. [Recurrent Neural Networks](https://github.com/iloveslowfood/iloveCookBook/blob/main/boostcamp_ai/daily_reports/Day014.md)
+
+- Day 15. [Generative Models](https://github.com/iloveslowfood/iloveCookBook/blob/main/boostcamp_ai/daily_reports/Day015.md)
