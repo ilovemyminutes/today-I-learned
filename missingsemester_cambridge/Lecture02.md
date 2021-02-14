@@ -202,8 +202,6 @@ $ history
 
 
 
-
-
 - `fzf`: interactive하게 명령어를 수행할 수 있음
 - `broot`
 - `nnn`
