@@ -33,3 +33,8 @@
 - Day 14. [Recurrent Neural Networks](https://github.com/iloveslowfood/iloveCookBook/blob/main/boostcamp_ai/daily_reports/Day014.md)
 
 - Day 15. [Generative Models](https://github.com/iloveslowfood/iloveCookBook/blob/main/boostcamp_ai/daily_reports/Day015.md)
+
+## Week04. NLP
+
+- Day 16. [Bag-of-Words, Word2Vec, Glove](https://github.com/iloveslowfood/iloveTIL/blob/main/boostcamp_ai/daily_reports/Day016.md)
+
