@@ -1,4 +1,4 @@
-# NAVER(계열사 포함)
+# NAVER
 
 NAVER 개발자가 되기 위해 필요한 역량 - NAVER LABS
 

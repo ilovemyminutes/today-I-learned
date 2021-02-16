@@ -209,10 +209,6 @@ for i in range(temp):
 ### Preprocessing
 * Batch Normalization
 
-### 
-
-
-
 * Loss function
     * Custom Loss
         * [Stock Price Prediction](https://towardsdatascience.com/customize-loss-function-to-make-lstm-model-more-applicable-in-stock-price-prediction-b1c50e50b16c)
