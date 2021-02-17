@@ -39,3 +39,5 @@
 - Day 16. [Bag-of-Words, Word2Vec, Glove](https://github.com/iloveslowfood/iloveTIL/blob/main/boostcamp_ai/daily_reports/Day016.md)
 
 - Day 17: [RNN, LSTM, GRU](https://github.com/iloveslowfood/iloveTIL/blob/main/boostcamp_ai/daily_reports/Day017.md)
+
+- Day 18. [Seq2Seq, Beam Search, BLEU](https://github.com/iloveslowfood/iloveTIL/blob/main/boostcamp_ai/daily_reports/Day018.md)
