@@ -178,3 +178,40 @@ for문은 iterable 객체의 \__next__() 메소드를 호출하는 역할을 수
   shared = origin.foo(3) # 내부 인스턴스를 변경한 채로 새로운 객체에 할당
   print(shared.foo2()) # 3 + 3 = 6
   ```
+
+for문은 적을 수록 좋다.
+
+- 같은 내용의 연산이더라도 loop를 적게 하는 것이 무조건 빠름
+
+- 여러 리스트를 공유된 loop에서 만드려고 할 때는 list comprehension이 아닌 일반적인 for loop를 활용하는 것이 좋다고 한다.
+
+  - Reference. [Python list comprehensions to create multiple lists duplicate](https://stackoverflow.com/questions/21023482/python-list-comprehensions-to-create-multiple-lists)
+
+  ```python
+  def foo():
+      a1, a2 = [], []
+      for i in range(10):
+          a1.append(i)
+      for j in range(10):
+          a2.append(j)
+      return a1, a2
+  
+  %timeit foo # 10000000 loops, best of 3: 28.4 ns per loop
+  
+  def foo():
+      a1, a2 = [], []
+      for i in range(10):
+          a1.append(i)
+          a2.append(j)
+      return a1, a2
+  
+  %timeit foo # 10000000 loops, best of 3: 28 ns per loop
+  ```
+
+길이를 반복적으로 호출할 경우 미리 할당하는 것이 좋다
+
+- *`len()`의 시간 복잡도는 O(1)이지만, 반복적으로 호출할 때는 `len()`값을 변수에 할당해둔 뒤, 해당 변수를 불러오는 것이 좋음*
+
+- 라고 생각했는데 다시 측정해보니 별 차이 없음
+
+  
