@@ -48,3 +48,10 @@
   - h_0: (num_layers \* num_directions, batch, hidden_size)
   - c_0: (num_layers \* num_directions, batch, hidden_size)
   - (h_0, c_0)가 입력되지 않을 경우 각각  0을 default로 설정
+
+`torch.mul(input: torch.Tensor, other: torch.Tensor) -> torch.Tensor`: element-wise multiplication
+
+`nn.Softmax()` vs `nn.functional.softmax()`
+
+- `nn.Softmax()`: PyTorch 모델의 일부 레이어로 활용할 수 있는 Module 클래스 객체
+- `nn.functional.softmax()`: 소프트맥스 연산을 수행하는 함수
