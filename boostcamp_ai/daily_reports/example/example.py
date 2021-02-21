@@ -7,7 +7,7 @@
 #     logger = logging.getLogger('main')
 #     logging.basicConfig(level=logging.DEBUG) # 로깅 레벨 설정
 #     logger.setLevel(logging.WARNING) # 왜 안되지
-    
+
 #     steam_handler = logging.FileHandler(
 #         'my.log', mode='w', encoding='utf-8'
 #     )
@@ -84,4 +84,3 @@
 #     writer.writerow(header)
 #     for row in buk_chon_ro:
 #         writer.writerow(row)
-
