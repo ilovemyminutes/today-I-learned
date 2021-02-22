@@ -35,7 +35,7 @@ Nearest Neighborhood
     - 사람들마다 평가 기준이 다르겠지만, 모든 상품들에 대해 어떤 사람은 전반적으로 높은 평가를, 어떤 사람은 전반적으로 낮은 평가를 매길 수도 있음 => bias 상승 위험
     - bias 문제를 방지하기 위해 점수를 예측하는 과정에서 추출한 사람들의 모든 상품에 대한 평점 평균을 각 평점에 뺀 뒤, 타깃 유저의 평점을 계산하고 타깃 유저의 모든 상품에 대한 평점 평균을 더함
 
-    ![user_based_CF](C:\Users\iloveslowfood\Documents\workspace\iloveTIL\recommendation_system\images\user_based_CF.jpg)
+    ![user_based_CF](https://github.com/iloveslowfood/iloveTIL/blob/main/recommendation_system/images/user_based_CF.jpg?raw=true)
 
   - 유사도 측정 방식: 피어슨 상관계수, 코사인 유사도
 
