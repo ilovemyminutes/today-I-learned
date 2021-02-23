@@ -45,3 +45,4 @@
 ## Week05. Graph
 
 - Day 21. [Graph](https://github.com/iloveslowfood/iloveTIL/blob/main/boostcamp_ai/daily_reports/Day021.md)
+- Day 22. [PageRank, Cascade](https://github.com/iloveslowfood/iloveTIL/blob/main/boostcamp_ai/daily_reports/Day022.md)
