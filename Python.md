@@ -214,4 +214,15 @@ for문은 적을 수록 좋다.
 
 - 라고 생각했는데 다시 측정해보니 별 차이 없음
 
-  
+
+함수명과 해당 함수 내 variable의 이름이 같아도 문제가 발생하지 않는다
+
+```python
+def foo():
+    foo = 1
+    return foo
+
+temp = foo()
+print(temp, type(foo), foo) # 1 <class 'function'> <function foo at 0x7f9bf305b488>
+```
+
