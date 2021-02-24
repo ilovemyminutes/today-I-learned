@@ -2,40 +2,85 @@
 
 ## NumPy
 
-- `np.random.rand(d1, d2, ... , dn)`: n차원 배열 생성. 각 값은 \[0, 1)
+***`arr`: 넘파이 배열
 
-- `np.arange(start, stop, step)`: `range()`와 같은 역할 + 실수값의 step 사용 가능
+`np.random.rand(d1, d2, ... , dn)`: n차원 배열 생성. 각 값은 \[0, 1)
 
-- `np.linspace(start, stop, num)`: 구간 [start, stop]을 균등하게 분할한 num개 지점에 대한 배열 생성
+`np.arange(start, stop, step)`: `range()`와 같은 역할 + 실수값의 step 사용 가능
 
-- `np.iinfo(type=)`: int, float 데이터 타입의 표현 가능한 수의 한계를 반환
+`np.linspace(start, stop, num)`: 구간 [start, stop]을 균등하게 분할한 num개 지점에 대한 배열 생성
 
-- `np.linalg.solve(a, b)`: 선형 연립 방정식 풀이(a: 계수, b: 상수) 
+`np.iinfo(type=)`: int, float 데이터 타입의 표현 가능한 수의 한계를 반환
 
-- `np.vectorize(func)`: 함수를 element-wise하게 활용될 수 있도록 변환
+`np.linalg.solve(a, b)`: 선형 연립 방정식 풀이(a: 계수, b: 상수) 
 
-  ```python
-  >>> np.vectorize(lambda x: x-1)(np.array([1, 2, 3])) # 원소 하나에 대해 1을 빼는 연산 실행
-  array([0, 1, 2])
-  ```
+`np.vectorize(func)`: 함수를 element-wise하게 활용될 수 있도록 변환
 
-- `배열.ndim`: 객체의 차원 반환
+```python
+>>> np.vectorize(lambda x: x-1)(np.array([1, 2, 3])) # 원소 하나에 대해 1을 빼는 연산 실행
+array([0, 1, 2])
+```
 
-- `배열.itemsize`: 배열 내 자료형 메모리 크기(byte)
+`arr.ndim`: 객체의 차원 반환
 
-- `배열.size`: 배열 내 성분 개수
+`arr.itemsize`: 배열 내 자료형 메모리 크기(byte)
 
-- 32bit 배열 + 64bit 배열: 결과값은 64bit 배열
+`arr.size`: 배열 내 성분 개수
+
+`np.argsort(arr)`: 배열을 정렬했을 때, 순서가 바뀐 인덱스 리스트를 반환
+
+32bit 배열 + 64bit 배열: 결과값은 64bit 배열
 
 ## Pandas
 
-- `pd.Categorical`: 컬럼 속성을 Categorical로 변환. Label Encoding을 진행할 떄 유용.
+***`df`: 판다스 데이터프레임, `srs`: 판다스 시리즈
 
-  ```python
-  temp = pd.Series([10,20,30,20,10]).to_frame('cat')
-  temp['cat'] = pd.Categorical(temp['cat']) # 해당 변수 type이 Categorical이 됨
-  temp['cat_ID'] = temp['cat'].cat.codes # 각 클래스별 ID는 cat.codes 인스턴스를 호출하여 구함
-  ```
+`pd.Categorical`: 컬럼 속성을 Categorical로 변환. Label Encoding을 진행할 떄 유용.
+
+```python
+temp = pd.Series([10,20,30,20,10]).to_frame('cat')
+temp['cat'] = pd.Categorical(temp['cat']) # 해당 변수 type이 Categorical이 됨
+temp['cat_ID'] = temp['cat'].cat.codes # 각 클래스별 ID는 cat.codes 인스턴스를 호출하여 구함
+```
+
+`df.itertuples(index: bool)`: 데이터프레임의 각 row를 튜플 형태로 iterating. iterating되는 객체는 `pandas.core.frame.Pandas` type을 지님
+
+```python
+for row in df_ratings.itertuples(index=True): # index를 False로 설정할 경우 index 미포함
+    print(row)
+'''
+...
+Pandas(Index=30386, userId=212, movieId=59369, rating=3.0)
+Pandas(Index=30387, userId=212, movieId=59784, rating=4.0)
+Pandas(Index=30388, userId=212, movieId=60069, rating=4.0)
+Pandas(Index=30389, userId=212, movieId=61024, rating=2.5)
+Pandas(Index=30390, userId=212, movieId=64034, rating=3.0)
+...
+'''
+row[0] # 30390 <- 인덱싱을 통한 접근
+row.Index # 30390 <- 키값을 통한 접근
+```
+
+`df.iterrows()`: 데이터프레임의 각 row를 `(index, srs)`의 형태로 iterating. 
+
+```python
+for row in df_ratings.iterrows():
+    print(row)
+'''
+...
+(2658, userId       19.0
+movieId    2052.0
+rating        2.0
+Name: 2658, dtype: float64)
+(2659, userId       19.0
+movieId    2053.0
+rating        2.0
+Name: 2659, dtype: float64)
+...
+'''
+```
+
+
 
 ## matplotlib
 
