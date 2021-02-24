@@ -226,3 +226,4 @@ temp = foo()
 print(temp, type(foo), foo) # 1 <class 'function'> <function foo at 0x7f9bf305b488>
 ```
 
+`max(dict, key=dict.get)`: 딕셔너리의 value값이 가장 큰 키값을 추출
