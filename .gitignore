@@ -1,5 +1,5 @@
 # etc docs
-*.pdf
+courses/*/*.pdf
 assignments/*
 
 # Byte-compiled / optimized / DLL files
