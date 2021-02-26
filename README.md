@@ -31,7 +31,8 @@ Shell, Git, 디버깅 등 CS 기술 전반을 다룬 [Missing Semester](https://
 #### ✔etc
 
 - Presentation
-  - [Positional Encoding](https://github.com/iloveslowfood/iloveTIL/raw/main/boostcamp_ai/etc/%5BPT%5D%20Sinusoidal%20Positional%20Encoding.pptx)
-  - [Recommender System - Collaborative Filtering](https://github.com/iloveslowfood/iloveTIL/raw/main/boostcamp_ai/etc/%5BPT%5D%20Recommender%20System%20-%20Collaborative%20Filtering.pptx)
-
+  - [Positional Encoding](https://github.com/iloveslowfood/iloveTIL/blob/main/boostcamp_ai/etc/%5BPT%5D%20Sinusoidal%20Positional%20Encoding.pdf)
+  - [Recommender System - Collaborative Filtering](https://github.com/iloveslowfood/iloveTIL/blob/main/boostcamp_ai/etc/%5BPT%5D%20Recommender%20System%20-%20Collaborative%20Filtering.pdf)
+- [Transformer](https://github.com/iloveslowfood/iloveTIL/blob/main/boostcamp_ai/etc/%5BPT%5D%20Transformer.pdf)
+  
   
