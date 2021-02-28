@@ -182,6 +182,14 @@ for i in range(temp):
 
 `string.isalpha()`: 문자열이 영어 또는 한글로 구성되어 있으면 True, 아니면 False
 
+### os
+
+`os.path.basename`: 경로 중 파일명만을 추출
+
+
+
+
+
 ## etc
 
 pyenv와 virtualenv는 다른 개념이다.
