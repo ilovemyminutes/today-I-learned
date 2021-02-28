@@ -48,4 +48,5 @@
 - Day 22. [PageRank, Cascade](https://github.com/iloveslowfood/iloveTIL/blob/main/boostcamp_ai/daily_reports/Day022.md)
 - Day 23. [Community, Recommender System](https://github.com/iloveslowfood/iloveTIL/blob/main/boostcamp_ai/daily_reports/Day023.md)
 - Day 24. [Embedding, Latent Factor RS](https://github.com/iloveslowfood/iloveTIL/blob/main/boostcamp_ai/daily_reports/Day024.md)
+- Day 25. [Graph Neural Network](https://github.com/iloveslowfood/iloveTIL/blob/main/boostcamp_ai/daily_reports/Day025.md)
 
