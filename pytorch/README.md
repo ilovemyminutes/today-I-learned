@@ -1,4 +1,6 @@
 # PyTorch
+*`Tensor`: 텐서 객체
+
 `torch`
 
 - 메인 네임스페이스. `Tensor` 등 다양한 수학 함수를 포함. NumPy와 유사한 방식으로 작동.
@@ -55,3 +57,18 @@
 
 - `nn.Softmax()`: PyTorch 모델의 일부 레이어로 활용할 수 있는 Module 클래스 객체
 - `nn.functional.softmax()`: 소프트맥스 연산을 수행하는 함수
+
+`nn.Embedding(num_embeddings: int, embedding_dim: int)`: 임베딩 레이어
+
+`nn.Linear(in_features: int, out_features: int, bias: bool=True)`: 선형변환(fully connected) 레이어
+
+`Tensor.contiguous()`: 텐서의 복사본을 생성
+
+- 엄밀하게 이해한 것은 아님!
+
+`torch.tril(input, diagonal=0)`: 하삼각행렬을 리턴
+
+- `diagonal`: 대각선의 인덱스
+- masking에 활용
+
+`Tensor.masked_fill_(mask: torch.BoolTensor, value: float)`: 텐서에 마스킹을 하는 함수. 마스킹할 위치에 `value` 값을 채워 넣음
