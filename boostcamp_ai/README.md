@@ -4,7 +4,7 @@
 
 
 
-## Week01. Python
+## Week 1. Python
 
 - Day 1. [파이썬/AI 개발환경 준비하기](https://github.com/iloveslowfood/iloveCookBook/blob/main/boostcamp_ai/daily_reports/Day001.md)
 - Day 2. [파이썬 기초 문법](https://github.com/iloveslowfood/iloveCookBook/blob/main/boostcamp_ai/daily_reports/Day002.md)
@@ -14,7 +14,7 @@
 
 
 
-## Week02. AI Math
+## Week 2. AI Math
 
 - Day 6. [NumPy / 벡터 / 행렬](https://github.com/iloveslowfood/iloveCookBook/blob/main/boostcamp_ai/daily_reports/Day006.md)
 - Day 7. [경사하강법](https://github.com/iloveslowfood/iloveCookBook/blob/main/boostcamp_ai/daily_reports/Day007.md)
@@ -24,7 +24,7 @@
 
 
 
-## Week03. DL Basic
+## Week 3. DL Basic
 
 - Day 11. [딥러닝 기초](https://github.com/iloveslowfood/iloveCookBook/blob/main/boostcamp_ai/daily_reports/Day011.md)
 - Day 12. [최적화, CNN 기초](https://github.com/iloveslowfood/iloveCookBook/blob/main/boostcamp_ai/daily_reports/Day012.md)
@@ -34,7 +34,7 @@
 
 - Day 15. [Generative Models](https://github.com/iloveslowfood/iloveCookBook/blob/main/boostcamp_ai/daily_reports/Day015.md)
 
-## Week04. NLP
+## Week 4. NLP
 
 - Day 16. [Bag-of-Words, Word2Vec, Glove](https://github.com/iloveslowfood/iloveTIL/blob/main/boostcamp_ai/daily_reports/Day016.md)
 - Day 17: [RNN, LSTM, GRU](https://github.com/iloveslowfood/iloveTIL/blob/main/boostcamp_ai/daily_reports/Day017.md)
@@ -42,7 +42,7 @@
 - Day 19. [Transformer](https://github.com/iloveslowfood/iloveTIL/blob/main/boostcamp_ai/daily_reports/Day019.md)
 - Day 20. [Self-supervised Pre-training Models](https://github.com/iloveslowfood/iloveTIL/blob/main/boostcamp_ai/daily_reports/Day020.md)
 
-## Week05. Graph
+## Week 05. Graph
 
 - Day 21. [Graph](https://github.com/iloveslowfood/iloveTIL/blob/main/boostcamp_ai/daily_reports/Day021.md)
 - Day 22. [PageRank, Cascade](https://github.com/iloveslowfood/iloveTIL/blob/main/boostcamp_ai/daily_reports/Day022.md)
@@ -50,3 +50,6 @@
 - Day 24. [Embedding, Latent Factor RS](https://github.com/iloveslowfood/iloveTIL/blob/main/boostcamp_ai/daily_reports/Day024.md)
 - Day 25. [Graph Neural Network](https://github.com/iloveslowfood/iloveTIL/blob/main/boostcamp_ai/daily_reports/Day025.md)
 
+## Week 06. Special Lectures
+
+- Day 26. [Special Lectures - 이활석, Lucy Park 마스터](https://github.com/iloveslowfood/iloveTIL/blob/main/boostcamp_ai/daily_reports/Day026.md)
