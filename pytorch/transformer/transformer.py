@@ -1,3 +1,5 @@
+import math
+
 import torch
 from torch import nn
 from torch.nn import functional as F
@@ -8,23 +10,16 @@ class MultiHeadAttention(nn.Module):
         super(MultiHeadAttention, self).__init__()
         self.hidden_dim = hidden_dim
         self.num_heads = num_heads
-        self.hidden_split_dim = hidden_dim // num_heads
-
+        self.hidden_split_dim = hidden_dim // num_heads # for multi-head attention
         return
 
-    def forward(self, data) -> torch.Tensor:
+    def forward(self, query, key, value) -> torch.Tensor:
         '''
         query, key, value가 입력되는 상황을 전제
-
         '''
-        
-        query = self.w_query(query).view()
-        key = self.w_key(key).view()
-        value = self.w_value(value).view()
-        torch.matmul(query, key.transpose(-1, -2)) / 
-        
-        
-        F.softmax()
+        attn_score = F.softmax(torch.matmul(query, key.transpose(-1, -2)) / math.sqrt(self.hidden_dim))
+        attn_value = torch.matmul(attn_score, value)
+        return attn_value
 
 class Encoder(nn.Module):
     def __init__(self):
@@ -52,7 +47,7 @@ class Transformer(nn.Module):
     def forward(self, input, output):    
         pass
 
-    def get_QKV(self, data):
+    def get_qkv(self, data):
         query = self.w_q(data)
         key = self.w_k(data)
         value = self.w_v(data)
