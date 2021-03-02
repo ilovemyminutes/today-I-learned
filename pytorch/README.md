@@ -72,3 +72,16 @@
 - masking에 활용
 
 `Tensor.masked_fill_(mask: torch.BoolTensor, value: float)`: 텐서에 마스킹을 하는 함수. 마스킹할 위치에 `value` 값을 채워 넣음
+
+Initialization
+
+```python
+# 방법1
+embedding_layer = nn.Embedding(num_embeddings=vocab_size, embedding_dim=3)
+embedding_layer.weight.data.uniform_(-1, 1)
+
+# 방법2 
+embedding_layer = nn.Embedding(num_embeddings=vocab_size, embedding_dim=3)
+nn.init.uniform_(embedding_layer.weight, -1, 1)
+```
+
