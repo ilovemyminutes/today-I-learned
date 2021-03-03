@@ -10,11 +10,11 @@ class Transformer(nn.Module):
     def __init__(
         self,
         vocab_size: int,
-        max_len: int, 
+        max_len: int,
         d_model: int,
         num_heads: int,
-        num_encoders: int=1,
-        num_decoders: int=1,
+        num_encoders: int = 1,
+        num_decoders: int = 1,
     ):
         """Transformer for Machine Translation
 
@@ -35,8 +35,14 @@ class Transformer(nn.Module):
         )
         self.positional_encoder = PositionalEncoder(d_model=d_model)
 
-        self.encoders = [Encoder(hidden_dim=d_model, num_heads=num_heads, max_len=max_len) for _ in range(num_encoders)]
-        self.decoders = [Decoder(num_blocks=num_decoders, num_heads=num_heads, max_len=max_len) for _ in range(num_decoders)]
+        self.encoders = [
+            Encoder(hidden_dim=d_model, num_heads=num_heads, max_len=max_len)
+            for _ in range(num_encoders)
+        ]
+        self.decoders = [
+            Decoder(num_blocks=num_decoders, num_heads=num_heads, max_len=max_len)
+            for _ in range(num_decoders)
+        ]
 
     def forward(self, X: torch.Tensor, output, train=True) -> torch.Tensor:
         batch_size = X.size(0)

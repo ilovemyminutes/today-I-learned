@@ -27,9 +27,7 @@ class MultiHeadAttention(nn.Module):
             torch.Tensor: Attention 텐서. (batch_size, max_len, hidden_dim)
         """
         self.batch_size = query.size(0)
-        query = query.view(
-            self.batch_size, -1, self.num_heads, self.d_k
-        )
+        query = query.view(self.batch_size, -1, self.num_heads, self.d_k)
         key = key.view(self.batch_size, -1, self.num_heads, self.d_k)
         value = value.view(self.batch_size, -1, self.num_heads, self.d_k)
 
@@ -53,7 +51,7 @@ class MultiHeadAttention(nn.Module):
 
         Returns:
             torch.Tensor: Attention 텐서. (batch_size, max_len, hidden_dim)
-        """    
+        """
         attention_raw = F.softmax(
             torch.matmul(query, key.transpose(-1, -2)) / math.sqrt(self.hidden_dim)
         )
