@@ -6,21 +6,21 @@ from attention import MultiHeadAttention
 
 
 class Encoder(nn.Module):
-    def __init__(self, hidden_dim: int, num_heads: int, max_len: int, num_blocks: int):
+    def __init__(self, d_model: int, num_heads: int, max_len: int):
 
         super(Encoder, self).__init__()
 
         # Layers for Query, Key, Value matrices
-        self.w_query = nn.Linear(in_features=hidden_dim, out_features=hidden_dim)
-        self.w_key = nn.Linear(in_features=hidden_dim, out_features=hidden_dim)
-        self.w_value = nn.Linear(in_features=hidden_dim, out_features=hidden_dim)
+        self.w_query = nn.Linear(in_features=d_model, out_features=d_model)
+        self.w_key = nn.Linear(in_features=d_model, out_features=d_model)
+        self.w_value = nn.Linear(in_features=d_model, out_features=d_model)
 
         # multi-head attention layer
-        self.attention = MultiHeadAttention(hidden_dim=hidden_dim, num_heads=num_heads)
-        self.attn_layer_norm = nn.LayerNorm(normalized_shape=(max_len, hidden_dim))
+        self.attention = MultiHeadAttention(hidden_dim=d_model, num_heads=num_heads)
+        self.attn_layer_norm = nn.LayerNorm(normalized_shape=(max_len, d_model))
 
-        self.linear = nn.Linear(in_features=hidden_dim, out_features=hidden_dim)
-        self.linear_layer_norm = nn.LayerNorm(normalized_shape=(max_len, hidden_dim))
+        self.linear = nn.Linear(in_features=d_model, out_features=d_model)
+        self.linear_layer_norm = nn.LayerNorm(normalized_shape=(max_len, d_model))
 
     def forward(self, X: torch.Tensor):
         """

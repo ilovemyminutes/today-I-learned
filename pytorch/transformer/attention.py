@@ -6,11 +6,11 @@ from torch.nn import functional as F
 
 
 class MultiHeadAttention(nn.Module):
-    def __init__(self, hidden_dim: int, num_heads: int):
+    def __init__(self, d_model: int, num_heads: int):
         super(MultiHeadAttention, self).__init__()
         self.num_heads = num_heads
-        self.hidden_dim = hidden_dim
-        self.hidden_dim_head = hidden_dim // num_heads
+        self.d_model = d_model
+        self.d_k = d_model // num_heads
         return
 
     def forward(
@@ -28,10 +28,10 @@ class MultiHeadAttention(nn.Module):
         """
         self.batch_size = query.size(0)
         query = query.view(
-            self.batch_size, -1, self.num_heads, self.hidden_dim_head
+            self.batch_size, -1, self.num_heads, self.d_k
         )
-        key = key.view(self.batch_size, -1, self.num_heads, self.hidden_dim_head)
-        value = value.view(self.batch_size, -1, self.num_heads, self.hidden_dim_head)
+        key = key.view(self.batch_size, -1, self.num_heads, self.d_k)
+        value = value.view(self.batch_size, -1, self.num_heads, self.d_k)
 
         query = query.transpose(1, 2)
         key = key.transpose(1, 2)

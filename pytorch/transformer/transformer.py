@@ -10,10 +10,10 @@ class Transformer(nn.Module):
         self,
         vocab_size: int,
         max_len: int, 
-        hidden_dim: int,
+        d_model: int,
         num_heads: int,
-        num_encoders: int,
-        num_decoders: int,
+        num_encoders: int=1,
+        num_decoders: int=1,
     ):
         """Transformer for Machine Translation
 
@@ -26,15 +26,14 @@ class Transformer(nn.Module):
             num_decoders (int): 디코더 블록 수
         """
         super(Transformer, self).__init__()
-        self.hidden_dim = hidden_dim
+        self.d_model = d_model
 
         self.embedding = nn.Embedding(
-            num_embeddings=vocab_size, embedding_dim=hidden_dim
+            num_embeddings=vocab_size, embedding_dim=d_model
         )
-        self.Encoder = Encoder(
-            hidden_dim=hidden_dim, num_blocks=num_encoders, num_heads=num_heads
-        )
-        self.Decoder = Decoder(num_blocks=num_decoders)
+
+        self.encoders = [Encoder(hidden_dim=d_model, num_heads=num_heads, max_len=max_len) for _ in range(num_encoders)]
+        self.decoders = [Decoder(num_blocks=num_decoders, num_heads=num_heads, max_len=max_len) for _ in range(num_decoders)]
 
     def forward(self, X: torch.Tensor, output, train=True) -> torch.Tensor:
         batch_size = X.size(0)
@@ -44,11 +43,6 @@ class Transformer(nn.Module):
         hidden_state = self.Encoder()
 
         return
-
-class PositionalEncoder(nn.Module):
-    def __init__(self, hidden_dim):
-        super(PositionalEncoder, self).__init__()
-        pass
 
 
 class Decoder(nn.Module):
