@@ -29,7 +29,7 @@ class MultiHeadAttention(nn.Module):
         self.batch_size = query.size(0)
         query = query.view(
             self.batch_size, -1, self.num_heads, self.hidden_dim_head
-        )  # (batch_size, max_len, num_heads, hidden_dim)
+        )
         key = key.view(self.batch_size, -1, self.num_heads, self.hidden_dim_head)
         value = value.view(self.batch_size, -1, self.num_heads, self.hidden_dim_head)
 
@@ -37,9 +37,9 @@ class MultiHeadAttention(nn.Module):
         key = key.transpose(1, 2)
         value = value.transpose(1, 2)
 
-        attention_score = self.get_self_attention(query, key, value)
+        attention = self.get_self_attention(query, key, value)
 
-        return attention_score
+        return attention
 
     def get_self_attention(
         self, query: torch.Tensor, key: torch.Tensor, value: torch.Tensor
@@ -57,7 +57,7 @@ class MultiHeadAttention(nn.Module):
         attention_raw = F.softmax(
             torch.matmul(query, key.transpose(-1, -2)) / math.sqrt(self.hidden_dim)
         )
-        attention_score = torch.matmul(attention_raw, value).view(
+        attention = torch.matmul(attention_raw, value).view(
             self.batch_size, -1, self.hidden_dim
         )
-        return attention_score
+        return attention

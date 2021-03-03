@@ -2,13 +2,14 @@ import torch
 from torch import nn
 from torch.nn import functional as F
 
-from transformer.encoder import Encoder
+from encoder import Encoder
 
 
 class Transformer(nn.Module):
     def __init__(
         self,
         vocab_size: int,
+        max_len: int, 
         hidden_dim: int,
         num_heads: int,
         num_encoders: int,
@@ -18,6 +19,7 @@ class Transformer(nn.Module):
 
         Args:
             vocab_size (int): 임베딩 딕셔너리 사이즈
+            max_len (int): 문장의 최대 길이(최대 토큰 수)
             hidden_dim (int): 인코더, 디코더 내 hidden state의 차원. 입력 데이터에 대한 임베딩 차원과 같음
             num_heads (int): Attention 헤드 수
             num_encoders (int): 인코더 블록 수
