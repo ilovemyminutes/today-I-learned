@@ -85,3 +85,4 @@ embedding_layer = nn.Embedding(num_embeddings=vocab_size, embedding_dim=3)
 nn.init.uniform_(embedding_layer.weight, -1, 1)
 ```
 
+`Tensor.view()`: 텐서의 shape를 변경. 입력한 shape에 맞게 변경하고, 단순히 가장 우선적으로 등장하는 값부터 채워넣는 식
