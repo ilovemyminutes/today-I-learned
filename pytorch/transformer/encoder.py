@@ -1,5 +1,3 @@
-import math
-
 import torch
 from torch import nn
 from torch.nn import functional as F
@@ -12,7 +10,7 @@ class Encoder(nn.Module):
 
         super(Encoder, self).__init__()
 
-        # to get Query, Key, Value matrices
+        # Layers for Query, Key, Value matrices
         self.w_query = nn.Linear(
             in_features=hidden_dim, out_features=hidden_dim
         ) 
@@ -21,7 +19,7 @@ class Encoder(nn.Module):
             in_features=hidden_dim, out_features=hidden_dim
         )
 
-        # multi-head attention
+        # multi-head attention layer
         self.attention = MultiHeadAttention(
             hidden_dim=hidden_dim, num_heads=num_heads
         ) 
