@@ -49,6 +49,14 @@ class Encoder(nn.Module):
         return hidden_state
 
     def get_qkv(self, X: torch.Tensor) -> torch.Tensor:
+        """Query, Key, Value 텐서를 리턴
+
+        Args:
+            X (torch.Tensor): [description]
+
+        Returns:
+            torch.Tensor: [description]
+        """        
         query = self.w_query(X)
         key = self.w_key(X)
         value = self.w_value(X)
