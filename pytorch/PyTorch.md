@@ -1,7 +1,7 @@
 # PyTorch
 *`Tensor`: 텐서 객체
 
-##### `torch`
+###### `torch`
 
 - 메인 네임스페이스. `Tensor` 등 다양한 수학 함수를 포함. NumPy와 유사한 방식으로 작동.
 
