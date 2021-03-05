@@ -4,27 +4,27 @@
 
 ***`arr`: 넘파이 배열
 
-###### `np.random.rand(d1, d2, ... , dn)`
+##### `np.random.rand(d1, d2, ... , dn)`
 
 - n차원 배열 생성. 각 값은 \[0, 1)
 
-###### `np.arange(start, stop, step)`
+##### `np.arange(start, stop, step)`
 
 - `range()`와 같은 역할 + 실수값의 step 사용 가능
 
-###### `np.linspace(start, stop, num)`
+##### `np.linspace(start, stop, num)`
 
 - 구간 [start, stop]을 균등하게 분할한 num개 지점에 대한 배열 생성
 
-###### `np.iinfo(type=)`
+##### `np.iinfo(type=)`
 
 - int, float 데이터 타입의 표현 가능한 수의 한계를 반환
 
-###### `np.linalg.solve(a, b)`
+##### `np.linalg.solve(a, b)`
 
 - 선형 연립 방정식 풀이(a: 계수, b: 상수) 
 
-###### `np.vectorize(func)`
+##### `np.vectorize(func)`
 
 - 함수를 element-wise하게 활용될 수 있도록 변환
 
@@ -49,23 +49,23 @@
   foo(arr) # array([ 1,  1, -1])
   ```
 
-###### `arr.ndim`
+##### `arr.ndim`
 
 - 객체의 차원 반환
 
-###### `arr.itemsize`
+##### `arr.itemsize`
 
 - 배열 내 자료형 메모리 크기(byte)
 
-###### `arr.size`
+##### `arr.size`
 
 - 배열 내 성분 개수
 
-###### `np.argsort(arr)`
+##### `np.argsort(arr)`
 
 - 배열을 정렬했을 때, 순서가 바뀐 인덱스 리스트를 반환
 
-###### etc
+##### etc
 
 - 32bit 배열 + 64bit 배열: 결과값은 64bit 배열
 
@@ -75,7 +75,7 @@
 
 ***`df`: 판다스 데이터프레임, `srs`: 판다스 시리즈
 
-###### `pd.Categorical`
+##### `pd.Categorical`
 
 - 컬럼 속성을 Categorical로 변환. Label Encoding을 진행할 떄 유용
 
@@ -85,7 +85,7 @@
   temp['cat_ID'] = temp['cat'].cat.codes # 각 클래스별 ID는 cat.codes 인스턴스를 호출하여 구함
   ```
 
-###### `df.itertuples(index: bool)`
+##### `df.itertuples(index: bool)`
 
 - 데이터프레임의 각 row를 튜플 형태로 iterating. iterating되는 객체는 `pandas.core.frame.Pandas` type을 지님
 
@@ -105,7 +105,7 @@
   row.Index # 30390 <- 키값을 통한 접근
   ```
 
-###### `df.iterrows()`
+##### `df.iterrows()`
 
 - 데이터프레임의 각 row를 `(index, srs)`의 형태로 iterating. 
 
@@ -130,7 +130,7 @@
 
 ## matplotlib
 
-###### etc
+##### etc
 
 - 가상환경에서 글꼴 변경하기
 
@@ -185,15 +185,15 @@
 
 *`from datetime import datetime as dt` 
 
-###### `dt.strptime(date_string, format)`
+##### `dt.strptime(date_string, format)`
 
 - 문자열 타입의 날짜 데이터를 datetime 자료형으로 변환
 
-###### `dt.timedelta(hours, seconds, days=)` 
+##### `dt.timedelta(hours, seconds, days=)` 
 
 - datetime 객체에 시차를 주고자 할 때 사용
 
-###### `iter()`
+##### `iter()`
 
 - iterable 객체를 iterator로 변환. `next()` 함수를 통해 iterating이 가능
 
@@ -207,7 +207,7 @@
 
 ### os
 
-###### `os.path.basename`
+##### `os.path.basename`
 
 - 경로 중 파일명만을 추출
 
@@ -215,15 +215,15 @@
 
 ### etc
 
-###### `all()`
+##### `all()`
 
 - iterable 객체의 모든 원소가 True인 경우 True
 
-###### `any()`
+##### `any()`
 
 - iterable 객체의 적어도 한 원소가 True인 경우 True
 
-###### `yield`
+##### `yield`
 
 - generator에 활용. 쥐고 있던 원소를 다 털어내면 아무 값도 뱉지 않고 에러도 나지 않음
 
@@ -237,7 +237,7 @@
       print(i) # 0, 1, 2, ... , 9
   ```
 
-###### `global`, `nonlocal`
+##### `global`, `nonlocal`
 
 - 지역변수이외의 변수에 접근할 때 사용하는 명령어
 
@@ -258,15 +258,15 @@
 
 * Reference. https://devbruce.github.io/python/py-13-global,nonlocal/
 
-###### `string.isalnum()`
+##### `string.isalnum()`
 
 - 문자열이 영어, 한글 또는 숫자로 구성되어 있으면 True, 아니면 False
 
-###### `string.isalpha()`
+##### `string.isalpha()`
 
 - 문자열이 영어 또는 한글로 구성되어 있으면 True, 아니면 False
 
-###### `max(dict, key=dict.get)`
+##### `max(dict, key=dict.get)`
 
 - 딕셔너리의 value값이 가장 큰 키값을 추출
 
@@ -274,23 +274,23 @@
 
 ## Notions
 
-###### pyenv와 virtualenv는 다른 개념이다.
+##### pyenv와 virtualenv는 다른 개념이다.
 
 * pyenv: 로컬 파이썬과 별개의 파이썬 버전을 마련하는 것
 * virtualenv: 기존 파이썬 패키지 폴더와 독립적인 파이썬 패키지 폴더를  마련하는 것. venv 간 파이썬 버전을 공유할 수 있음
 
-###### Name Mangling(=Name Decoration)
+##### Name Mangling(=Name Decoration)
 
 - 함수를 선언하거나 전역 변수 등을 선언했을 때 컴파일 단계에서 일정한 규칙을 갖고 변경되는 것
 - Linker가 다른 Scope에 있는 같은 이름의 함수와 변수에 대해 구별할 수 있도록 하는 요소로, 컴파일러 입장에서 중요한 작업
 - 컴파일러는 함수에 대하여 함수의 이름, 파라미터 타입, Calling Convention 등을 사용하여 이름을 생성
 - Reference. [Name Mangling](https://thepassion.tistory.com/61)
 
-###### for문의 역할
+##### for문의 역할
 
 - iterable 객체의 \__next__() 메소드를 호출하는 역할을 수행한다.
 
-###### 클래스 메서드(class method)
+##### 클래스 메서드(class method)
 
 * 인스턴스 메서드와 달리 `self `인자를 전달하는 것이 아닌 `cls`인자(클래스 자기 자신)를 전달
 
@@ -316,7 +316,7 @@
   print(shared.foo2()) # 3 + 3 = 6
   ```
 
-###### for문은 적을 수록 좋다.
+##### for문은 적을 수록 좋다
 
 - 같은 내용의 연산이더라도 loop를 적게 하는 것이 무조건 빠름
 
@@ -345,13 +345,13 @@
   %timeit foo # 10000000 loops, best of 3: 28 ns per loop
   ```
 
-###### 길이를 반복적으로 호출할 경우 미리 할당하는 것이 좋다
+##### 길이를 반복적으로 호출할 경우 미리 할당하는 것이 좋다
 
 - `len()`*의 시간 복잡도는 O(1)이지만, 반복적으로 호출할 때는* `len()`*값을 변수에 할당해둔 뒤, 해당 변수를 불러오는 것이 좋음*
 
 - 라고 생각했는데 다시 측정해보니 별 차이 없음
 
-###### 함수명과 해당 함수 내 variable의 이름이 같아도 문제가 발생하지 않는다
+##### 함수명과 해당 함수 내 variable의 이름이 같아도 문제가 발생하지 않는다
 
 ```python
 def foo():
