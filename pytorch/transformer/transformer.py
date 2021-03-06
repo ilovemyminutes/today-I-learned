@@ -3,6 +3,7 @@ from torch import nn
 from torch.nn import functional as F
 
 from encoder import Encoder
+from decoder import Decoder
 from positional_encoding import PositionalEncoder
 
 
@@ -36,7 +37,7 @@ class Transformer(nn.Module):
         self.positional_encoder = PositionalEncoder(d_model=d_model)
 
         self.encoders = [
-            Encoder(hidden_dim=d_model, num_heads=num_heads, max_len=max_len)
+            Encoder(d_model=d_model, num_heads=num_heads, max_len=max_len)
             for _ in range(num_encoders)
         ]
         self.decoders = [
@@ -53,9 +54,3 @@ class Transformer(nn.Module):
         hidden_state = self.Encoder()
 
         return
-
-
-class Decoder(nn.Module):
-    def __init__(self, num_blocks: int):
-        super(Decoder, self).__init__()
-        pass

@@ -1,7 +1,7 @@
 # PyTorch
 *`Tensor`: 텐서 객체
 
-###### `torch`
+##### `torch`
 
 - 메인 네임스페이스. `Tensor` 등 다양한 수학 함수를 포함. NumPy와 유사한 방식으로 작동.
 
@@ -11,7 +11,7 @@
 
 ##### `torch.nn`
 
-- 신경망 구축을 위한 다양한 데이터 구조/레이어가 정의된 모듈. Layer, Activation Function, Loss Function 등 포함
+- ##### 신경망 구축을 위한 다양한 데이터 구조/레이어가 정의된 모듈. Layer, Activation Function, Loss Function 등 포함
 
 ##### `torch.optim`
 

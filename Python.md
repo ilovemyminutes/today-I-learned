@@ -145,6 +145,43 @@
     plt.show()
     ```
 
+
+
+## scipy
+
+##### `scipy.sparse`
+
+- 대용량 sparse 데이터를 핸들링할 때 유용하게 활용 가능
+
+- `csr_matrix`: 행을 기준으로 sparse 데이터를 압축
+
+- `csc_matrix`: 열을 기준으로 sparse 데이터를 압축
+
+  ```python
+  >>> import scipy.sparse
+  >>> sparse_matrix = scipy.sparse.csc_matrix(np.array([[0, 0, 3], [4, 0, 0]]))
+  >>> sparse_matrix
+  <2x3 sparse matrix of type '<class 'numpy.int64'>'
+     with 2 stored elements in Compressed Sparse Column format>
+  >>> sparse_matrix.todense()
+  matrix([[0, 0, 3],
+          [4, 0, 0]], dtype=int64)
+  
+  >>> scipy.sparse.save_npz('/tmp/sparse_matrix.npz', sparse_matrix)
+  >>> sparse_matrix = scipy.sparse.load_npz('/tmp/sparse_matrix.npz')
+  
+  >>> sparse_matrix
+  <2x3 sparse matrix of type '<class 'numpy.int64'>'
+     with 2 stored elements in Compressed Sparse Column format>
+  >>> sparse_matrix.todense()
+  matrix([[0, 0, 3],
+          [4, 0, 0]], dtype=int64)
+  ```
+
+  
+
+
+
 ---
 
 ## Built-in Modules & Functions

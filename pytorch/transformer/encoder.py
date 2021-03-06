@@ -16,13 +16,13 @@ class Encoder(nn.Module):
         self.w_value = nn.Linear(in_features=d_model, out_features=d_model)
 
         # multi-head attention layer
-        self.attention = MultiHeadAttention(hidden_dim=d_model, num_heads=num_heads)
+        self.attention = MultiHeadAttention(d_model=d_model, num_heads=num_heads)
         self.attn_layer_norm = nn.LayerNorm(normalized_shape=(max_len, d_model))
 
         self.linear = nn.Linear(in_features=d_model, out_features=d_model)
         self.linear_layer_norm = nn.LayerNorm(normalized_shape=(max_len, d_model))
 
-    def forward(self, X: torch.Tensor):
+    def forward(self, X: torch.Tensor) -> torch.Tensor:
         """
         Args:
             data (torch.Tensor): Positional Encoding 벡터가 더해진 임베딩 벡터. (batch_size, max_len, hidden_dim)
