@@ -186,6 +186,23 @@
 
 ## Built-in Modules & Functions
 
+### collections
+
+###### `ChainMap`
+
+- 여러 딕셔너리를 하나로 통합할 때 활용. 리스트 내 딕셔러니를 일괄 언패킹하여 통합함
+
+  ```python
+  >>> from collections import ChainMap
+  >>> d1 = {1: 'one', 2: 'two'}
+  >>> d2 = {3: 'three'}
+  >>> ds = [d1, d2]
+  >>> dict(ChainMap(*ds))
+  {1: 'one', 2: 'two', 3: 'three'}
+  ```
+
+
+
 ### re
 
 - Meta characters: `.` `^` `$` `*` `+` `?` `{` `}` `[` `]` `\` `|` `(` `)`
