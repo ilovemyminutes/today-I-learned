@@ -6,11 +6,12 @@ from torch.nn import functional as F
 
 
 class MultiHeadAttention(nn.Module):
-    def __init__(self, d_model: int, num_heads: int):
+    def __init__(self, d_model: int, num_heads: int, mask: bool=False):
         super(MultiHeadAttention, self).__init__()
         self.num_heads = num_heads
         self.d_model = d_model
         self.d_k = d_model // num_heads
+        self.mask =mask
         return
 
     def forward(
@@ -59,3 +60,4 @@ class MultiHeadAttention(nn.Module):
             self.batch_size, -1, self.hidden_dim
         )
         return attention
+
