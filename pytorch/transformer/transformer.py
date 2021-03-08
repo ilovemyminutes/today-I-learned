@@ -1,8 +1,5 @@
-import copy
-
 import torch
 from torch import nn
-from torch.nn import functional as F
 
 from encoder import Encoder
 from decoder import Decoder
@@ -47,15 +44,15 @@ class Transformer(nn.Module):
         ]
         self.linear = nn.Linear(in_features=d_model, out_features=vocab_size)
 
-    def forward(self, input: torch.Tensor, output, train=True) -> torch.Tensor:
+    def forward(self, input: torch.Tensor, output: torch.Tensor) -> torch.Tensor:
         input_embedded = self._get_embedding_with_positional_encoding(input)
         output_embedded = self._get_embedding_with_positional_encoding(output)
 
-        enc_hidden_state = input_embedded.contiguous()
+        enc_hidden_state = input_embedded.clone()
         for encoder in self.encoders:
             enc_hidden_state = encoder(enc_hidden_state)
 
-        dec_hidden_state = output_embedded.contiguous()
+        dec_hidden_state = output_embedded.clone()
         for decoder in self.decoders:
             dec_hidden_state = decoder(
                 encoder_hidden_state=enc_hidden_state, output_embedded=dec_hidden_state
