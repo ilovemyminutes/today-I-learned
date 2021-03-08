@@ -32,8 +32,8 @@ class Encoder(nn.Module):
         """
         # multi-head attention
         residual = X.contiguous()
-        query, key, value = self.get_qkv(X)
-        attn_scores = self.attention(query, key, value)
+        qkv = self.get_qkv(X)
+        attn_scores = self.attention(*qkv)
         attn_scores += residual
         attn_scores = self.attn_layer_norm(attn_scores)
 

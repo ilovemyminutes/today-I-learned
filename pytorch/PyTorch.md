@@ -40,27 +40,33 @@
 
 - 영텐서를 생성. 순차적으로 shape값을 입력(tuple로 넣지 않아도 되는데 왠지 가독성 면에서 tuple로 넣는게 나을 것 같다)
 
+##### `torch.randint(low=0, high, size: tuple)`
+
+- 임의의 정수로 채워진 텐서를 생성
+- 각 정수는 [`low`, `high`)에서 무작위 복원추출
+- `size`: 텐서의 크기
+
 ##### `torch.nn.LSTM(input_size, hidden_size, num_layers, bias: bool, batch_first: bool, dropout, bidirectional)`
 
-- bias: False일 경우 bias 항을 제외하고 학습. Default - True
-- batch_first: True일 경우 input/output 텐서의 shape가 (batch_size, sequence length, feature_size)로 설정됨. Default - False
-- dropout: non-zero일 경우 마지막 레이어를 제외한 각 LSTM 레이어 간 output에 대해 Dropout 레이어를 적용
-- Input: input, (h_0, c_0)
-  - input: (sequence_length, batch_size, input_size)
-  - h_0: (num_layers \* num_directions, batch, hidden_size)
-  - c_0: (num_layers \* num_directions, batch, hidden_size)
-  - (h_0, c_0)가 입력되지 않을 경우 각각  0을 default로 설정
+- `bias`: False일 경우 bias 항을 제외하고 학습. Default - True
+- `batch_first`: True일 경우 input/output 텐서의 shape가 (batch_size, sequence length, feature_size)로 설정됨. Default - False
+- `dropout`: non-zero일 경우 마지막 레이어를 제외한 각 LSTM 레이어 간 output에 대해 Dropout 레이어를 적용
+- 입력: `input, (h_0, c_0)`
+  - `input`: (sequence_length, batch_size, input_size)
+  - `h_0`: (num_layers \* num_directions, batch, hidden_size)
+  - `c_0`: (num_layers \* num_directions, batch, hidden_size)
+  - `(h_0, c_0)`가 입력되지 않을 경우 각각  0을 default로 설정
 
 ##### `torch.nn.Conv2(in_channels, out_channels, kernel_size, stride=1, padding=0, dilation=1, groups=1, bias=True, padding_mode='zeros')`
 
 - 2차원 합성곱 레이어
-- input: (N, Cin, H, W)
-- output: (N, Cout), Hout, Wout)
+- 입력: (N, Cin, H, W)
+- 출력: (N, Cout), Hout, Wout)
 
 ##### `torch.nn.BatchNorm2d(num_features, eps=1e-5, momentum=.1, affine=True, track_running_stats=True)`
 
-- Input: (N, C, H, W)
-- Output: (N, C, H, W)(그대로)
+- 입력: (N, C, H, W)
+- 출력: (N, C, H, W)(그대로)
 
 - `num_features`: (N, C, H, W)의 입력값 중 C값, 즉 이전 레이어의 출력 채널 수
 - `eps`: 수치적 안정성을 위해 분모에 더할 값(zero division 문제를 방지하는 듯)
@@ -123,6 +129,8 @@
 
 - `diagonal`: 대각선의 인덱스
 - masking에 활용
+
+`torch.triu(input, diagonal=0)`
 
 ##### `Tensor.masked_fill_(mask: torch.BoolTensor, value: float)`
 
