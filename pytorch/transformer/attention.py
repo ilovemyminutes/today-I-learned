@@ -17,7 +17,7 @@ class MultiHeadAttention(nn.Module):
     def forward(
         self, query: torch.Tensor, key: torch.Tensor, value: torch.Tensor
     ) -> torch.Tensor:
-        """Query, Key, Value 텐서를 입력 받아 Attention 텐서를 리턴
+        """Query, Key, Value 텐서를 입력 받아 Attention 텐서를 리턴. mask 인스턴스가 True일 경우 Masked Multi-headed Attention을 수행
 
         Args:
             query (torch.Tensor): Query 텐서. (batch_size, max_len, hidden_dim)
@@ -57,8 +57,8 @@ class MultiHeadAttention(nn.Module):
             torch.matmul(query, key.transpose(-1, -2)) / math.sqrt(self.d_model), dim=-1
         )
         if self.mask:
-            d1, d2 = attention_raw.shape[-2:]
-            mask = torch.triu(torch.ones(d1, d2), diagonal=1).bool()
+            max_len = attention_raw.shape[-1]
+            mask = torch.triu(torch.ones(max_len, max_len), diagonal=1).bool()
             attention_raw = F.softmax(attention_raw.masked_fill(mask=mask, value=float('-inf')), dim=-1)
         
         attention = torch.matmul(attention_raw, value).view(
