@@ -17,7 +17,9 @@ class Encoder(nn.Module):
         self.w_value = nn.Linear(in_features=d_model, out_features=d_model)
 
         # multi-head attention layer
-        self.attention = MultiHeadAttention(d_model=d_model, num_heads=num_heads, mask=False)
+        self.attention = MultiHeadAttention(
+            d_model=d_model, num_heads=num_heads, mask=False
+        )
         self.attn_layer_norm = nn.LayerNorm(normalized_shape=d_model)
 
         self.linear = nn.Linear(in_features=d_model, out_features=d_model)
@@ -34,7 +36,7 @@ class Encoder(nn.Module):
         attn_scores = self.attention(query, key, value)
         attn_scores += residual
         attn_scores = self.attn_layer_norm(attn_scores)
-        
+
         # feed forward
         residual = attn_scores.contiguous()
         hidden_state = self.linear(attn_scores)
@@ -42,7 +44,6 @@ class Encoder(nn.Module):
         hidden_state = self.linear_layer_norm(hidden_state)
 
         return hidden_state
-
 
     def get_qkv(self, X: torch.Tensor) -> torch.Tensor:
         """Query, Key, Value 텐서를 리턴

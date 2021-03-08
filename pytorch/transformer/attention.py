@@ -6,7 +6,7 @@ from torch.nn import functional as F
 
 
 class MultiHeadAttention(nn.Module):
-    def __init__(self, d_model: int, num_heads: int, mask: bool=False):
+    def __init__(self, d_model: int, num_heads: int, mask: bool = False):
         super(MultiHeadAttention, self).__init__()
         self.num_heads = num_heads
         self.d_model = d_model
@@ -59,10 +59,11 @@ class MultiHeadAttention(nn.Module):
         if self.mask:
             max_len = attention_raw.shape[-1]
             mask = torch.triu(torch.ones(max_len, max_len), diagonal=1).bool()
-            attention_raw = F.softmax(attention_raw.masked_fill(mask=mask, value=float('-inf')), dim=-1)
-        
+            attention_raw = F.softmax(
+                attention_raw.masked_fill(mask=mask, value=float("-inf")), dim=-1
+            )
+
         attention = torch.matmul(attention_raw, value).view(
             self.batch_size, -1, self.d_model
         )
         return attention
-

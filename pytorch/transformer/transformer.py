@@ -51,11 +51,11 @@ class Transformer(nn.Module):
         batch_size = input.size(0)
         input_embedded = self._get_embedding_with_positional_encoding(input)
         output_embedded = self._get_embedding_with_positional_encoding(output)
-        
+
         enc_hidden_state = input_embedded.contiguous()
         for encoder in self.encoders:
             enc_hidden_state = encoder(enc_hidden_state)
-        
+
         for decoder in self.decoders:
             raise NotImplementedError()
 
