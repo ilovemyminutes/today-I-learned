@@ -20,4 +20,4 @@ class PositionalEncoder(nn.Module):
                 w_k = 1e4 ** (2 * i / self.d_model)
                 enc_vector.append(w_k)
         enc_vector = torch.tensor(enc_vector).view(1, max_len, 1)
-        return enc_vector
+        return enc_vector.long()

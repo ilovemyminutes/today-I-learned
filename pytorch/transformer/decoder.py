@@ -47,14 +47,14 @@ class Decoder(nn.Module):
             torch.Tensor: forward 출력 텐서
         """
         # masked multi-head attention
-        residual = output_embedded.contiguous()
+        residual = output_embedded.clone()
         qkv_masked_attn = self._get_qkv_masked_attn(output_embedded)
         output_masked_attn = self.attention(*qkv_masked_attn)
         output_masked_attn = self.attn_layer_norm(output_masked_attn)
         output_masked_attn += residual
 
         # multi-head attention
-        residual = output_masked_attn.contiguous()
+        residual = output_masked_attn.clone()
         qkv_attn = self._get_qkv_attn(encoder_hidden_state, output_masked_attn)
         output_attn = self.masked_attention(*qkv_attn)
         output_attn = self.masked_attn_layer_norm(output_attn)
