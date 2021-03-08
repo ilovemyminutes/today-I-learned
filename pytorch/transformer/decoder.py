@@ -32,17 +32,17 @@ class Decoder(nn.Module):
         output_masked_attn = self.attention(query, key, value)
         output_masked_attn = self.attn_layer_norm(output_masked_attn)
 
-        key_encoder = self.w_      
-
+        query_enc, key_enc, value_masked_attn = self._get_qkv_masked_attn(encoder_hidden_state, output_masked_attn)
         pass
 
-    def _get_qkv_masked_attn(self, encoder_hidden_state, output_embedded):
+    def _get_qkv_masked_attn(self, encoder_hidden_state, output_masked_attn):
         query = self.w_query_masked_attn(encoder_hidden_state)
         key = self.w_key_masked_attn(encoder_hidden_state)
-        value = self.w_value_masked_attn(output_embedded)
+        value = self.w_value_masked_attn(output_masked_attn)
         return query, key, value
 
     def _get_qkv_attn(self, output_embedded):
         query = self.w_query_attn(output_embedded)
         key = self.w_key_attn(output_embedded)
         value = self.w_value_attn(output_embedded)
+        return query, key, value
