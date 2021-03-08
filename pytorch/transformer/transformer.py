@@ -43,8 +43,7 @@ class Transformer(nn.Module):
             for _ in range(num_encoders)
         ]
         self.decoders = [
-            Decoder(d_model=d_model, num_heads=num_heads)
-            for _ in range(num_decoders)
+            Decoder(d_model=d_model, num_heads=num_heads) for _ in range(num_decoders)
         ]
         self.linear = nn.Linear(in_features=d_model, out_features=vocab_size)
 
@@ -58,7 +57,9 @@ class Transformer(nn.Module):
 
         dec_hidden_state = output_embedded.contiguous()
         for decoder in self.decoders:
-            dec_hidden_state = decoder(encoder_hidden_state=enc_hidden_state, output_embedded=dec_hidden_state)
+            dec_hidden_state = decoder(
+                encoder_hidden_state=enc_hidden_state, output_embedded=dec_hidden_state
+            )
 
         output = self.linear(dec_hidden_state)
         return output
