@@ -1,3 +1,5 @@
+import copy
+
 import torch
 from torch import nn
 from torch.nn import functional as F
@@ -45,12 +47,19 @@ class Transformer(nn.Module):
             for _ in range(num_decoders)
         ]
 
-    def forward(self, X: torch.Tensor, output, train=True) -> torch.Tensor:
-        batch_size = X.size(0)
-        max_len = X.size(1)
+    def forward(self, input: torch.Tensor, output, train=True) -> torch.Tensor:
+        batch_size = input.size(0)
 
-        X_embedded = self.embedding_layer(X)  # (batch_size, max_len, hidden_dim)
-        X_embedded += self.positional_encoder.forward(max_len=self.max_len)
-        hidden_state = self.Encoder()
+        input_embedded = self._get_embedding_with_positionalencoding(input)
+        
+        enc_hidden_state = copy.deepcopy(input_embedded)
+        for encoder in self.encoders:
+            enc_hidden_state = encoder(enc_hidden_state)
+        
+        for decoder in self.decoders:
+            raise NotImplementedError()
 
-        return
+    def _get_embedding_with_positionalencoding(self, X: torch.Tensor) -> torch.Tensor:
+        X = self.embedding_layer(X)
+        X += self.positional_encoder(max_len=self.max_len)
+        return X
