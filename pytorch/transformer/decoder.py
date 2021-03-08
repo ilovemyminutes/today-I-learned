@@ -7,7 +7,7 @@ from attention import MultiHeadAttention
 
 
 class Decoder(nn.Module):
-    def __init__(self, d_model: int, num_heads: int, max_len: int) -> None:
+    def __init__(self, d_model: int, num_heads: int) -> None:
         super(Decoder, self).__init__()
         self.w_query_attn = nn.Linear(in_features=d_model, out_features=d_model)
         self.w_key_attn = nn.Linear(in_features=d_model, out_features=d_model)
@@ -53,7 +53,7 @@ class Decoder(nn.Module):
         output_attn += residual
         return output_attn
 
-    def _get_qkv_attn(self, encoder_hidden_state: torch.Tensor, output_masked_attn: torch.Tensor) -> Tuple(torch.Tensor, torch.Tensor, torch.Tensor):
+    def _get_qkv_attn(self, encoder_hidden_state: torch.Tensor, output_masked_attn: torch.Tensor) -> Tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
         """Multi-head Attention 셀에 입력할 Query, Key, Value 텐서를 출력
 
         Args:
@@ -68,7 +68,7 @@ class Decoder(nn.Module):
         value = self.w_value_masked_attn(output_masked_attn)
         return query, key, value
 
-    def _get_qkv_masked_attn(self, output_embedded: torch.Tensor) -> Tuple(torch.Tensor, torch.Tensor, torch.Tensor):
+    def _get_qkv_masked_attn(self, output_embedded: torch.Tensor) -> Tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
         """Masked Multi-head Attention 셀에 입력할 Query, Key, Value 텐서를 출력
 
         Args:

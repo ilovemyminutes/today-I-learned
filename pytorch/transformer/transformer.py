@@ -49,8 +49,8 @@ class Transformer(nn.Module):
 
     def forward(self, input: torch.Tensor, output, train=True) -> torch.Tensor:
         batch_size = input.size(0)
-        input_embedded = self._get_embedding_with_positionalencoding(input)
-        output_embedded = self._get_embedding_with_positionalencoding(output)
+        input_embedded = self._get_embedding_with_positional_encoding(input)
+        output_embedded = self._get_embedding_with_positional_encoding(output)
         
         enc_hidden_state = input_embedded.contiguous()
         for encoder in self.encoders:
@@ -59,7 +59,7 @@ class Transformer(nn.Module):
         for decoder in self.decoders:
             raise NotImplementedError()
 
-    def _get_embedding_with_positionalencoding(self, X: torch.Tensor) -> torch.Tensor:
+    def _get_embedding_with_positional_encoding(self, X: torch.Tensor) -> torch.Tensor:
         X = self.embedding_layer(X)
         X += self.positional_encoder(max_len=self.max_len)
         return X
