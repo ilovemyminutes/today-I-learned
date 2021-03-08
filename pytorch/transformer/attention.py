@@ -11,7 +11,7 @@ class MultiHeadAttention(nn.Module):
         self.num_heads = num_heads
         self.d_model = d_model
         self.d_k = d_model // num_heads
-        self.mask =mask
+        self.mask = mask
         return
 
     def forward(
@@ -53,10 +53,14 @@ class MultiHeadAttention(nn.Module):
         Returns:
             torch.Tensor: Attention 텐서. (batch_size, max_len, d_model)
         """
-
         attention_raw = F.softmax(
             torch.matmul(query, key.transpose(-1, -2)) / math.sqrt(self.d_model), dim=-1
         )
+        if self.mask:
+            d1, d2 = attention_raw.shape[-2:]
+            mask = torch.triu(torch.ones(d1, d2), diagonal=1).bool()
+            attention_raw.masked_fill_(maks=mask, value=float('-inf'))
+
         attention = torch.matmul(attention_raw, value).view(
             self.batch_size, -1, self.d_model
         )
