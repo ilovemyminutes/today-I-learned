@@ -21,7 +21,7 @@ class Encoder(nn.Module):
         self.attn_layer_norm = nn.LayerNorm(normalized_shape=d_model)
 
         self.linear = nn.Linear(in_features=d_model, out_features=d_model)
-        self.linear_layer_norm = nn.LayerNorm(normalized_shape=d_model))
+        self.linear_layer_norm = nn.LayerNorm(normalized_shape=d_model)
 
     def forward(self, X: torch.Tensor) -> torch.Tensor:
         """
@@ -29,7 +29,7 @@ class Encoder(nn.Module):
             data (torch.Tensor): Positional Encoding 벡터가 더해진 임베딩 벡터. (batch_size, max_len, hidden_dim)
         """
         # multi-head attention
-        residual = X.view(self.max_len, -1, self.d_model)
+        residual = X 
         query, key, value = self.get_qkv(X)
         attn_scores = self.attention(query, key, value)
         attn_scores += residual
