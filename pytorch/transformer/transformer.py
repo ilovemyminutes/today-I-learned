@@ -33,7 +33,7 @@ class Transformer(nn.Module):
         self.d_model = d_model
         self.max_len = max_len
 
-        self.embedding_layer = nn.Embedding(
+        self.embedder = nn.Embedding(
             num_embeddings=vocab_size, embedding_dim=d_model
         )
         self.positional_encoder = PositionalEncoder(d_model=d_model)
@@ -64,7 +64,7 @@ class Transformer(nn.Module):
         output = self.linear(dec_hidden_state)
         return output
 
-    def _get_embedding_with_positional_encoding(self, X: torch.Tensor) -> torch.Tensor:
-        X = self.embedding_layer(X)
-        X += self.positional_encoder(max_len=self.max_len)
-        return X
+    def _get_embedding_with_positional_encoding(self, input: torch.Tensor) -> torch.Tensor:
+        input_embedded = self.embedder(input)
+        input_embedded += self.positional_encoder(max_len=self.max_len)
+        return input_embedded

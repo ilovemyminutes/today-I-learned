@@ -57,7 +57,7 @@ class Encoder(nn.Module):
         Returns:
             query/key/value: Query/Key/Value 텐서
         """
-        query = self.w_query(X)
-        key = self.w_key(X)
-        value = self.w_value(X)
+        query = self.w_query(input_embedded)
+        key = self.w_key(input_embedded)
+        value = self.w_value(input_embedded)
         return query, key, value
