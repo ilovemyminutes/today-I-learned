@@ -55,3 +55,7 @@
 - Day 26. [Special Lectures - 이활석, Lucy Park 마스터](https://github.com/iloveslowfood/iloveTIL/blob/main/boostcamp_ai/daily_reports/Day026.md)
 
 - Day 27. [Special Lectures - 김상훈, 이준엽 마스터](https://github.com/iloveslowfood/iloveTIL/blob/main/boostcamp_ai/daily_reports/Day027.md)
+
+## Week 07. CV
+
+- Day 31. [Image Classification, Annotation Data Efficient Learning](https://github.com/iloveslowfood/iloveTIL/blob/main/boostcamp_ai/daily_reports/Day031.md)
