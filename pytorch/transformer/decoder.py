@@ -9,3 +9,4 @@ class Decoder(nn.Module):
         
 
     def forward(self, X: torch.Tensor):
+        

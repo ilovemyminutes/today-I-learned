@@ -46,18 +46,18 @@ class MultiHeadAttention(nn.Module):
         """attention 텐서를 리턴. multi-head attention 수행 후, aggregate된 최종 attention 텐서를 리턴
 
         Args:
-            query (torch.Tensor): Query 텐서. (batch_size, num_heads, max_len, hidden_dim_head)
-            key (torch.Tensor): Key 텐서. (batch_size, num_heads, max_len, hidden_dim_head)
-            value (torch.Tensor): Value 텐서. (batch_size, num_heads, max_len, hidden_dim_head)
+            query (torch.Tensor): Query 텐서. (batch_size, num_heads, max_len, d_k)
+            key (torch.Tensor): Key 텐서. (batch_size, num_heads, max_len, d_k)
+            value (torch.Tensor): Value 텐서. (batch_size, num_heads, max_len, d_k)
 
         Returns:
-            torch.Tensor: Attention 텐서. (batch_size, max_len, hidden_dim)
+            torch.Tensor: Attention 텐서. (batch_size, max_len, d_model)
         """
         attention_raw = F.softmax(
-            torch.matmul(query, key.transpose(-1, -2)) / math.sqrt(self.hidden_dim)
+            torch.matmul(query, key.transpose(-1, -2)) / math.sqrt(self.d_model)
         )
         attention = torch.matmul(attention_raw, value).view(
-            self.batch_size, -1, self.hidden_dim
+            self.batch_size, -1, self.d_model
         )
         return attention
 

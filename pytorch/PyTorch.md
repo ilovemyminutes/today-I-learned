@@ -51,7 +51,29 @@
   - c_0: (num_layers \* num_directions, batch, hidden_size)
   - (h_0, c_0)가 입력되지 않을 경우 각각  0을 default로 설정
 
-##### `torch.mul(input: torch.Tensor, other: torch.Tensor) -> torch.Tensor`: element-wise multiplication
+##### `torch.nn.Conv2(in_channels, out_channels, kernel_size, stride=1, padding=0, dilation=1, groups=1, bias=True, padding_mode='zeros')`
+
+- 2차원 합성곱 레이어
+- input: (N, Cin, H, W)
+- output: (N, Cout), Hout, Wout)
+
+##### `torch.nn.BatchNorm2d(num_features, eps=1e-5, momentum=.1, affine=True, track_running_stats=True)`
+
+- Input: (N, C, H, W)
+- Output: (N, C, H, W)(그대로)
+
+- `num_features`: (N, C, H, W)의 입력값 중 C값, 즉 이전 레이어의 출력 채널 수
+- `eps`: 수치적 안정성을 위해 분모에 더할 값(zero division 문제를 방지하는 듯)
+- `momentum`: running_mean, running_var 연산에 활용. None으로 설정시 단순 평균으로 설정됨
+- `affine: bool`: True로 설정시, affine 파라미터가 학습 가능하게 설정됨
+- `track_running_stats: bool`
+  - True: running mean, variance를 트래킹
+  - False: 트래킹 x, 즉, `running_mean`과 `running_var`가 모두 `None`
+
+##### `torch.mul(input: torch.Tensor, other: torch.Tensor) -> torch.Tensor`
+
+- element-wise multiplication
+- NOTE: element-wise 곱은 1×N 또는 N×N의 관계에만 성립
 
 ##### `nn.Softmax()` vs `nn.functional.softmax()`
 
