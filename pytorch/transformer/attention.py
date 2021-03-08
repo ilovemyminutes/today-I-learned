@@ -53,6 +53,7 @@ class MultiHeadAttention(nn.Module):
         Returns:
             torch.Tensor: Attention 텐서. (batch_size, max_len, d_model)
         """
+
         attention_raw = F.softmax(
             torch.matmul(query, key.transpose(-1, -2)) / math.sqrt(self.d_model), dim=-1
         )
