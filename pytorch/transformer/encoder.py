@@ -1,6 +1,7 @@
+from typing import Tuple
+
 import torch
 from torch import nn
-from torch.nn import functional as F
 
 from attention import MultiHeadAttention
 
@@ -25,14 +26,14 @@ class Encoder(nn.Module):
         self.linear = nn.Linear(in_features=d_model, out_features=d_model)
         self.linear_layer_norm = nn.LayerNorm(normalized_shape=d_model)
 
-    def forward(self, X: torch.Tensor) -> torch.Tensor:
+    def forward(self, input_embedded: torch.Tensor) -> torch.Tensor:
         """
         Args:
-            data (torch.Tensor): Positional Encoding 벡터가 더해진 임베딩 벡터. (batch_size, max_len, hidden_dim)
+            input_embedded (torch.Tensor): Positional Encoding 벡터가 더해진 임베딩 벡터. (B, L, d_model)
         """
         # multi-head attention
-        residual = X.contiguous()
-        qkv = self.get_qkv(X)
+        residual = input_embedded.contiguous()
+        qkv = self.get_qkv(input_embedded)
         attn_scores = self.attention(*qkv)
         attn_scores += residual
         attn_scores = self.attn_layer_norm(attn_scores)
@@ -45,14 +46,14 @@ class Encoder(nn.Module):
 
         return hidden_state
 
-    def get_qkv(self, X: torch.Tensor) -> torch.Tensor:
+    def get_qkv(self, input_embedded: torch.Tensor) -> Tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
         """Query, Key, Value 텐서를 리턴
 
         Args:
-            X (torch.Tensor): [description]
+            input_embedded (torch.Tensor): Positional Encoding 벡터가 더해진 임베딩 벡터. (B, L, d_model)
 
         Returns:
-            torch.Tensor: [description]
+            query/key/value: Query/Key/Value 텐서
         """
         query = self.w_query(X)
         key = self.w_key(X)
