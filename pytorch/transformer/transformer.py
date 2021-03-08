@@ -50,6 +50,7 @@ class Transformer(nn.Module):
     def forward(self, input: torch.Tensor, output, train=True) -> torch.Tensor:
         batch_size = input.size(0)
         input_embedded = self._get_embedding_with_positionalencoding(input)
+        output_embedded = self._get_embedding_with_positionalencoding(output)
         
         enc_hidden_state = input_embedded.contiguous()
         for encoder in self.encoders:

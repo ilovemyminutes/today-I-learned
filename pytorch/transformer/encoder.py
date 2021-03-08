@@ -29,14 +29,14 @@ class Encoder(nn.Module):
             data (torch.Tensor): Positional Encoding 벡터가 더해진 임베딩 벡터. (batch_size, max_len, hidden_dim)
         """
         # multi-head attention
-        residual = X 
+        residual = X.contiguous()
         query, key, value = self.get_qkv(X)
         attn_scores = self.attention(query, key, value)
         attn_scores += residual
         attn_scores = self.attn_layer_norm(attn_scores)
         
         # feed forward
-        residual = attn_scores
+        residual = attn_scores.contiguous()
         hidden_state = self.linear(attn_scores)
         hidden_state += residual
         hidden_state = self.linear_layer_norm(hidden_state)
