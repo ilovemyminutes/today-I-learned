@@ -59,8 +59,8 @@ class MultiHeadAttention(nn.Module):
         if self.mask:
             d1, d2 = attention_raw.shape[-2:]
             mask = torch.triu(torch.ones(d1, d2), diagonal=1).bool()
-            attention_raw.masked_fill_(maks=mask, value=float('-inf'))
-
+            attention_raw = F.softmax(attention_raw.masked_fill(mask=mask, value=float('-inf')), dim=-1)
+        
         attention = torch.matmul(attention_raw, value).view(
             self.batch_size, -1, self.d_model
         )
