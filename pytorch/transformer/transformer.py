@@ -26,6 +26,8 @@ class Transformer(nn.Module):
             num_heads (int): Attention 헤드 수
             num_encoders (int): 인코더 블록 수
             num_decoders (int): 디코더 블록 수
+
+        Reference: https://arxiv.org/abs/1706.03762
         """
         super(Transformer, self).__init__()
         self.d_model = d_model
@@ -39,7 +41,7 @@ class Transformer(nn.Module):
         self.linear = nn.Linear(in_features=d_model, out_features=vocab_size)
 
     def forward(self, input: torch.Tensor, output: torch.Tensor) -> torch.Tensor:
-        """다음과 같은 과정으로 feed-forward가 진행됨
+        """다음과 같은 과정으로 feed-forward 진행
             *P.E: Positional Encoding
 
                 Input ->  Embedded input with P.E -> [Encoder Block] -> Encoder hidden state
@@ -54,6 +56,8 @@ class Transformer(nn.Module):
 
         Returns:
             torch.Tensor: Output
+
+        Reference: http://jalammar.github.io/illustrated-transformer/
         """        
         input_embedded = self._get_embedding_with_positional_encoding(input)
         output_embedded = self._get_embedding_with_positional_encoding(output)
