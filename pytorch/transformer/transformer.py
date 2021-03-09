@@ -4,6 +4,7 @@ from torch import nn
 from encoder import Encoder
 from decoder import Decoder
 from positional_encoding import PositionalEncoder
+from utils import MultipleInputSequential
 
 
 class Transformer(nn.Module):
@@ -29,6 +30,7 @@ class Transformer(nn.Module):
         super(Transformer, self).__init__()
         self.d_model = d_model
         self.max_len = max_len
+        self.num_heads = num_heads
 
         self.embedder = nn.Embedding(
             num_embeddings=vocab_size, embedding_dim=d_model
@@ -38,20 +40,23 @@ class Transformer(nn.Module):
         self.decoders = self._get_decoders(num_decoders=num_decoders)
         self.linear = nn.Linear(in_features=d_model, out_features=vocab_size)
     
-
     def forward(self, input: torch.Tensor, output: torch.Tensor) -> torch.Tensor:
         input_embedded = self._get_embedding_with_positional_encoding(input)
         output_embedded = self._get_embedding_with_positional_encoding(output)
 
-        enc_hidden_state = input_embedded.clone()
-        for encoder in self.encoders:
-            enc_hidden_state = encoder(enc_hidden_state)
+        enc_hidden_state = self.encoders(input_embedded)
+        dec_hidden_state = self.decoders(output_embedded, enc_hidden_state)
 
-        dec_hidden_state = output_embedded.clone()
-        for decoder in self.decoders:
-            dec_hidden_state = decoder(
-                encoder_hidden_state=enc_hidden_state, output_embedded=dec_hidden_state
-            )
+        # enc_hidden_state = input_embedded.clone()
+        # for encoder in self.encoders:
+        #     enc_hidden_state = encoder(enc_hidden_state)
+
+        # dec_hidden_state = self.decoders(output_embedded)
+        # dec_hidden_state = output_embedded.clone()
+        # for decoder in self.decoders:
+        #     dec_hidden_state = decoder(
+        #         encoder_hidden_state=enc_hidden_state, output_embedded=dec_hidden_state
+        #     )
 
         output = self.linear(dec_hidden_state)
         return output
@@ -64,13 +69,11 @@ class Transformer(nn.Module):
         ]
         return nn.Sequential(*encoders)
     
-
     def _get_decoders(self, num_decoders: int) -> nn.Sequential:
         decoders = [
             Decoder(d_model=self.d_model, num_heads=self.num_heads) for _ in range(num_decoders)
         ]
-        return nn.Sequential(*decoders)
-
+        return MultipleInputSequential(*decoders)
 
     def _get_embedding_with_positional_encoding(self, input: torch.Tensor) -> torch.Tensor:
         input_embedded = self.embedder(input)
