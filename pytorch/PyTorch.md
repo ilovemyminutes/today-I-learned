@@ -63,6 +63,21 @@
 - 입력: (N, Cin, H, W)
 - 출력: (N, Cout), Hout, Wout)
 
+##### `torch.nn.Unsample(size=None, scale_factor=None, mode='nearest', align_corners=None)`
+
+- multi-channel의 1D(temporal), 2D(spatial), 3D(volumetric) 데이터를 업샘플링
+- 입력: `(N, C, D_in(optional), H_in(optional), W_in)`
+  - 2D(spatial) 텐서 데이터 입력시: (B, C, H, W)의 4D 텐서를 입력해야 함
+  - 3D(volumetric) 텐서 데이터 입력시: (B, C, D, H, W)의 5D 텐서를 입력해야 함
+- 출력: `(N, C, D_out(optional), H_out(optional), W_out)`
+- 사용 가능한 업샘플링 알고리즘: linear, bilinear, bicubic, trilinear
+  - 3D, 4D, 5D 각각 모두 사용 가능
+- 출력 사이즈 조절을 위해 `scale_factor`, `size`를 사용할 수 있음(둘 중 하나만 설정 가능)
+- `size`: 출력 spatial 사이즈
+- `scale_factor`: spatial 사이즈에 곱할 값. 튜플로 입력할 경우 입력의 각 사이즈에 대응
+- `mode`: 업샘플링 알고리즘 선택. `'nearest'`, `'linear'`, `'bilinear'`, `'bicubic'`, `'trilinear'`
+- `align_corners`: `True` 시 각 모서리의 값이 유지됨. `'linear'`, `'bilinear'`, `'trilinear'`에서만 적용 효과가 나타남
+
 ##### `torch.nn.BatchNorm2d(num_features, eps=1e-5, momentum=.1, affine=True, track_running_stats=True)`
 
 - 입력: (N, C, H, W)
