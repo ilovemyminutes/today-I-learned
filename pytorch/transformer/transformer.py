@@ -8,6 +8,12 @@ from utils import MultipleInputSequential
 
 
 class Transformer(nn.Module):
+    """Implements Transformer
+    References.
+        - Ashish Vaswani et.al, 2017, 'Attention is All You Need', https://arxiv.org/abs/1706.03762
+        - Maxime, 2019, 'What is a Transformer?', https://medium.com/inside-machine-learning/what-is-a-transformer-d07dd1fbec04
+        - JayAlammar, 2018, 'The Illustrated Transformer', http://jalammar.github.io/illustrated-transformer/
+    """
     def __init__(
         self,
         vocab_size: int,

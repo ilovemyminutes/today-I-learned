@@ -1,3 +1,8 @@
+from torch import nn, optim
+
+optimizer = optim.Adam()
+optimizer.step()
+
 # import logging
 
 # print('hi')
