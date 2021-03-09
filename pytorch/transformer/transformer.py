@@ -34,15 +34,10 @@ class Transformer(nn.Module):
             num_embeddings=vocab_size, embedding_dim=d_model
         )
         self.positional_encoder = PositionalEncoder(d_model=d_model)
-
-        self.encoders = [
-            Encoder(d_model=d_model, num_heads=num_heads, max_len=max_len)
-            for _ in range(num_encoders)
-        ]
-        self.decoders = [
-            Decoder(d_model=d_model, num_heads=num_heads) for _ in range(num_decoders)
-        ]
+        self.encoders = self._get_encoders(num_encoders=num_encoders)
+        self.decoders = self._get_decoders(num_decoders=num_decoders)
         self.linear = nn.Linear(in_features=d_model, out_features=vocab_size)
+    
 
     def forward(self, input: torch.Tensor, output: torch.Tensor) -> torch.Tensor:
         input_embedded = self._get_embedding_with_positional_encoding(input)
@@ -61,7 +56,24 @@ class Transformer(nn.Module):
         output = self.linear(dec_hidden_state)
         return output
 
+
+    def _get_encoders(self, num_encoders: int) -> nn.Sequential:
+        encoders = [
+            Encoder(d_model=self.d_model, num_heads=self.num_heads, max_len=self.max_len)
+            for _ in range(num_encoders)
+        ]
+        return nn.Sequential(*encoders)
+    
+
+    def _get_decoders(self, num_decoders: int) -> nn.Sequential:
+        decoders = [
+            Decoder(d_model=self.d_model, num_heads=self.num_heads) for _ in range(num_decoders)
+        ]
+        return nn.Sequential(*decoders)
+
+
     def _get_embedding_with_positional_encoding(self, input: torch.Tensor) -> torch.Tensor:
         input_embedded = self.embedder(input)
         input_embedded += self.positional_encoder(max_len=self.max_len)
         return input_embedded
+
