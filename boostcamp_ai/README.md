@@ -59,3 +59,5 @@
 ## Week 07. CV
 
 - Day 31. [Image Classification, Annotation Data Efficient Learning](https://github.com/iloveslowfood/iloveTIL/blob/main/boostcamp_ai/daily_reports/Day031.md)
+- Day 32. [Image Classification II, Semantic Segmentation](https://github.com/iloveslowfood/iloveTIL/blob/main/boostcamp_ai/daily_reports/Day032.md)
+
