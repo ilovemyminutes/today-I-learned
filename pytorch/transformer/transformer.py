@@ -39,6 +39,22 @@ class Transformer(nn.Module):
         self.linear = nn.Linear(in_features=d_model, out_features=vocab_size)
 
     def forward(self, input: torch.Tensor, output: torch.Tensor) -> torch.Tensor:
+        """다음과 같은 과정으로 feed-forward가 진행됨
+            *P.E: Positional Encoding
+
+                Input ->  Embedded input with P.E -> [Encoder Block] -> Encoder hidden state
+                                     ┌───────────────────────────────────────────┘
+                          Encoder hidden state ──────┐
+                                              [Decoder Block] -> Linear -> Output 
+                Output -> Embedded output with P.E ──┘
+
+        Args:
+            input (torch.Tensor): [description]
+            output (torch.Tensor): [description]
+
+        Returns:
+            torch.Tensor: Output
+        """        
         input_embedded = self._get_embedding_with_positional_encoding(input)
         output_embedded = self._get_embedding_with_positional_encoding(output)
 
@@ -49,6 +65,14 @@ class Transformer(nn.Module):
         return output
 
     def _get_encoders(self, num_encoders: int) -> nn.Sequential:
+        """Encoder 블록을 생성
+
+        Args:
+            num_encoders (int): 블록에 넣을 Encoder 수
+
+        Returns:
+            nn.Sequential: Encoder 블록
+        """        
         encoders = [
             Encoder(
                 d_model=self.d_model, num_heads=self.num_heads, max_len=self.max_len
@@ -58,6 +82,14 @@ class Transformer(nn.Module):
         return nn.Sequential(*encoders)
 
     def _get_decoders(self, num_decoders: int) -> nn.Sequential:
+        """Decoder 블록을 생성
+
+        Args:
+            num_decoders (int): 블록에 넣을 Decoder 수
+
+        Returns:
+            nn.Sequential: Decoder 블록
+        """        
         decoders = [
             Decoder(d_model=self.d_model, num_heads=self.num_heads)
             for _ in range(num_decoders)
@@ -67,6 +99,14 @@ class Transformer(nn.Module):
     def _get_embedding_with_positional_encoding(
         self, input: torch.Tensor
     ) -> torch.Tensor:
+        """Positional Encoding 벡터를 생성
+
+        Args:
+            input (torch.Tensor): Positional Encoding 벡터의 차원을 결정하는데 참조할 input 텐서
+
+        Returns:
+            torch.Tensor: Positional Encoding 벡터
+        """    
         input_embedded = self.embedder(input)
         input_embedded += self.positional_encoder(max_len=self.max_len)
         return input_embedded
