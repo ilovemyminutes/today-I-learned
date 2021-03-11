@@ -9,6 +9,36 @@
 
 - 자동 미분 도구를 지원하는 모듈. 자동미분을 on/off하는 `enable_grad`, `no_grad` 등 지원
 
+  ```python
+  >>> x = torch.randn(2, require_grad=True)
+  >>> y = x*3
+  >>> gradients = torch.tensor([100, .1], dtype=torch.float) # σL/σy = (100, .1)을 가정
+  >>> y.backward(gradients, retain_grad=False) # 구한 그래디언트를 역전파
+  >>> print(x.grad) # σL/σx = σy/σx * σL/σy = (3, 3) * (100, .1) = (300, .3)
+  tensor([300.0000, 0.3000])
+  ```
+
+  - `requires_grad`: `True`시 해당 변수가 그래디언트를 쥐고 있게 됨
+
+  - `retain_grad`: `True`시 `backward` 이후 그래디언트 정보를 잃지 않음. `False`시 `backward` 이후 그래디언트 정보를 삭제(메모리 확보) Default - `False`
+
+    - `retain_grad`를 `False`로 설정(default)한 뒤 `backward`를 여러 번 할 경우 Runtime Error가 발생
+
+    - `retain_grad`를 `True`로 설정(default)한 뒤 `backward`를 여러 번 할 경우 그래디언트가 accumulation. 즉, 모델의 Train phase에서 `zero_grad()`를 해주지 않으면 그래디언트가 중첩되는 문제 발생
+
+      ```python
+      >>> x = torch.randn(2, require_grad=True)
+      >>> y = x*3
+      >>> gradients = torch.tensor([100, .1], dtype=torch.float) # σL/σy = (100, .1)을 가정
+      >>> y.backward(gradients, retain_grad=False) # 구한 그래디언트를 역전파
+      >>> y.backward(gradients, retain_grad=False) # 구한 그래디언트를 역전파
+      tensor([600.0000, 0.6000])
+      ```
+
+      
+
+- [?] Train Phase에서 `optimizer`, `criterion`을 활용한 `backward` 과정은 구체적으로 어떻게 되는거지?
+
 ##### `torch.nn`
 
 - ##### 신경망 구축을 위한 다양한 데이터 구조/레이어가 정의된 모듈. Layer, Activation Function, Loss Function 등 포함
