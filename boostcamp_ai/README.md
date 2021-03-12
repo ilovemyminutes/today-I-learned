@@ -61,3 +61,4 @@
 - Day 31. [Image Classification, Annotation Data Efficient Learning](https://github.com/iloveslowfood/iloveTIL/blob/main/boostcamp_ai/daily_reports/Day031.md)
 - Day 32. [Image Classification II, Semantic Segmentation](https://github.com/iloveslowfood/iloveTIL/blob/main/boostcamp_ai/daily_reports/Day032.md)
 
+- Day 33. [Object Detection, CNN Visualization](https://github.com/iloveslowfood/iloveTIL/blob/main/boostcamp_ai/daily_reports/Day033.md)
