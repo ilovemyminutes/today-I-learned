@@ -2,6 +2,8 @@ from torchvision import transforms
 from torchvision.datasets import ImageFolder
 from torch.utils.data import DataLoader, Dataset
 
+import fire
+
 from config import Config
 
 
@@ -26,3 +28,6 @@ class MyDataset(Dataset):
     def _get_imagefolder(self):
         return ImageFolder(root=self.data_root, transform=self.transforms)
     
+
+if __name__ == '__main__':
+    fire.Fire(MyDataset)
