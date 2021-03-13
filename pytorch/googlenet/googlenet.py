@@ -8,3 +8,4 @@ class GoogLeNet(nn.Module):
         super(GoogLeNet, self).__init__()
 
     def forward(input):
+        
