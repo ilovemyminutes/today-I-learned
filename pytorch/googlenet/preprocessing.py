@@ -5,7 +5,7 @@ from torch.utils.data import DataLoader, Dataset
 from config import Config
 
 
-class Dataset(Dataset):
+class MyDataset(Dataset):
     def __init__(self, batch_size: int=Config.batch_size, data_root: str=Config.train_dir):
         self.data_root = data_root
         self.transforms = transforms.Compose([
