@@ -9,5 +9,5 @@
     "python.testing.pytestEnabled": false,
     "python.testing.nosetestsEnabled": false,
     "python.testing.unittestEnabled": true,
-    "python.pythonPath": "C:\\Users\\iloveslowfood\\miniconda3\\envs\\py36\\python.exe"
+    "python.pythonPath": "C:\\Users\\iloveslowfood\\Miniconda3\\envs\\py37\\python.exe"
 }
