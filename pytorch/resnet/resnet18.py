@@ -5,7 +5,7 @@ from torch import nn
 
 
 class ResNet(nn.Module):
-    def __init__(self):
+    def __init__(self, n_class: int):
         super(ResNet, self).__init__()
         self.layers = nn.Sequential(
             OrderedDict([
@@ -20,7 +20,7 @@ class ResNet(nn.Module):
             ])
         )
         self.avgpool = nn.AdaptiveAvgPool2d(output_size=(1,1))
-        self.fc = nn.Linear(in_features=512, out_features=2, bias=True)
+        self.fc = nn.Linear(in_features=512, out_features=n_class, bias=True)
 
     def forward(self, input):
         output = self.layers(input)
