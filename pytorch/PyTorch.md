@@ -59,6 +59,27 @@
 
 - 파이토치에서 지원하는 데이터셋을 불러오기 위한 모듈
 
+##### `torchvision.datasets.ImageFolder(root: str, transform: Union[Callable, NoneType])=None`
+
+- 이미지 데이터가 담긴 디렉토리를 바탕으로 데이터셋을 구성. `root` 데이터 디렉토리 내 클래스별로 이미지가 구분되어 있어야 함
+- `transform`: Train/Inference Phase에 입력될 데이터에 대한 전처리 과정을 입력
+  - `torch.transforms.Compose()`를 통해 전처리 프로세스 구성
+
+##### `torch.transforms.Compose()`
+
+- 이미지 데이터에 대한 Train/Inference 이전 전처리 프로세스를 구성
+
+  ```python
+  data_transforms = transforms.Compose([
+      transforms.ToTensor(), # 텐서이어야만 가능한 전처리가 있기 때문에 텐서 형태로 가장 먼저 변경하는 것이 좋음
+      transforms.Resize((224, 224)),
+      transforms.RandomHorizontalFlip(),
+      transforms.Normalize((.5, .5, .5), (.5, .5, .5)),
+  ])
+  ```
+
+  
+
 ##### `torch.utils.data.DataLoader`
 
 ##### `torch.Tensor().sort(descending: bool=False) -> torch.return_types.sort`
@@ -120,6 +141,10 @@
 - `track_running_stats: bool`
   - True: running mean, variance를 트래킹
   - False: 트래킹 x, 즉, `running_mean`과 `running_var`가 모두 `None`
+
+
+
+
 
 ###### `torch.matmul(input: torch.Tensor, other: torch.Tensor) -> torch.Tensor`
 

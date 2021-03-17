@@ -257,15 +257,11 @@
   next(iterator) # 0, 1, 2, ... , 9 / 마지막 이후에는 StopIteration
   ```
 
-
-
 ### os
 
 ##### `os.path.basename`
 
 - 경로 중 파일명만을 추출
-
-
 
 ### etc
 

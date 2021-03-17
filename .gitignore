@@ -1,6 +1,7 @@
 # etc docs
 courses/*/*.pdf
 assignments/*
+pytorch/datasets/imagenet-mini/*/*/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
