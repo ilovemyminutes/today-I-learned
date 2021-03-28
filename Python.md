@@ -126,6 +126,22 @@
   '''
   ```
 
+##### 컬럼을 제외할 경우, 되도록 `drop`보다  `iloc/loc`를 사용하는 것이 빠르다
+
+- 가령, 하나의 컬럼을 제외하려는 경우, 약 770배 가량의 차이가 났음. 데이터 크기에 따라 차이 정도는 상이하겠지만, 명백히 `iloc/loc`를 사용하는 것이 빠름
+
+  ```python
+  def foo():
+      user_tfidf.drop('post_meta_id', axis=1)
+  %timeit foo() # 100 loops, best of 5: 1.24 ms per loop
+  
+  def foo():
+      user_tfidf.iloc[:, 1:]
+  %timeit foo() # 1000 loops, best of 5: 161 µs per loop
+  ```
+
+  
+
 ---
 
 ## matplotlib
