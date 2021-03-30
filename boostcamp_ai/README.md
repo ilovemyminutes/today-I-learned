@@ -67,3 +67,6 @@
 
 - Day 37. [Timespace for ML, Compression](https://github.com/iloveslowfood/iloveTIL/blob/main/boostcamp_ai/daily_reports/Day037.md)
 
+### P Stage 01. Image Classification
+
+- [Daily Logs - Image Classification](https://github.com/iloveslowfood/iloveTIL/blob/main/boostcamp_ai/daily_reports/PStage%20-%2001.%20Image%20Classification%20-%20DailyLogs.md)
