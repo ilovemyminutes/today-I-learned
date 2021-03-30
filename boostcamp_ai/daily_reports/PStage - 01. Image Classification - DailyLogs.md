@@ -1,4 +1,4 @@
-# Daily Logs
+# Daily Logs - Image Classification
 
 ### 2021.03.28
 
