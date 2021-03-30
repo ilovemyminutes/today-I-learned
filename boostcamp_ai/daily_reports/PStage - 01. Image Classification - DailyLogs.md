@@ -32,7 +32,7 @@
 
   - 첫째로 떠올랐던 것: 3가지 task를 수행한 뒤 절충하는 과정을 거치는 모델
 
-    ![model architecture2](C:\Users\iloveslowfood\Documents\workspace\ImageClassfication\etc\model architecture2.png)
+    ![model architecture2](https://github.com/iloveslowfood/iloveTIL/blob/main/boostcamp_ai/etc/images/PStage%20-%2001.%20Image%20Classification/model%20architecture2.png?raw=true)
 
     - RCNN Family의 모델로부터 아이디어를 얻었던 방법이다. Fast RCNN 모델에서 바운딩박스와 카테고리 예측을 별도로 수행하는 것처럼, pretrain된 ImageNet을 활용하여 1차적으로 feature map을 얻은 뒤, 3가지 task를 개별적으로 수행한다.
     - (한계)*어떻게 학습할건데?*: - 이러한 모델은 ***각각의 task로부터 얻은 loss값을 어떻게 통합할 것이며, 어떻게 weight를 업데이트하는 것이 좋을지를*** 판단하는 것이 중요해보였다. 가장 간단한 방법은 단순 평균을 사용하는 방법이겠으나, *'Loss를 더욱 interactive하게 가중합하는 방법은 없을까?'*라는 의구심이 들었다.
@@ -41,7 +41,7 @@
 
   - Attention을 써먹으면 더 좋지 않을까?
 
-    ![model architecture3](C:\Users\iloveslowfood\Documents\workspace\ImageClassfication\etc\model architecture3.png)
+    ![model architecture3](https://github.com/iloveslowfood/iloveTIL/blob/main/boostcamp_ai/etc/images/PStage%20-%2001.%20Image%20Classification/model%20architecture3.png?raw=true)
 
     - Loss에 현명한 가중치를 부여하는 방법을 고민하다가 고안하게된 모델 구조
     - 일반적으로 end-to-end 학습이 더 높은 성능을 보이는 것으로 알려져있고, 이 competition의 문제로서는 인공신경망이 '알아서 마스크 상태, 성별, 나이대를 적절히 고려해주었으면 좋겠다' 정도로 생각해볼 수있다.
@@ -75,7 +75,7 @@
   - 성별, 마스크 상태, 연령대를 각기 다른 task로 나누어 예측
   - Pretrained ImageNet을 활용해 이미지로부터 feature를 추출한 뒤, 추출한 feature로부터 3가지의 task를 수행(함을 가정)
 
-  ![model architecture](C:\Users\iloveslowfood\Documents\workspace\ImageClassfication\etc\model architecture.png)
+  ![model architecture](https://github.com/iloveslowfood/iloveTIL/blob/main/boostcamp_ai/etc/images/PStage%20-%2001.%20Image%20Classification/model%20architecture.png?raw=true)
 
 > ***Train Configuration***
 
