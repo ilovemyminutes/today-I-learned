@@ -21,10 +21,6 @@
 
 Shell, Git, 디버깅 등 CS 기술 전반을 다룬 [Missing Semester](https://www.youtube.com/c/MissingSemester/videos) 강의를 정리한 공간
 
-#### ✔[Enterprise Research](https://github.com/iloveslowfood/iloveTIL/tree/main/enterprise_research)
-
-관심 기업에 대한 현황을 정리한 공간
-
 #### ✔[Attitude](https://github.com/iloveslowfood/iloveTIL/blob/main/Attitude.md)
 개인적으로 갖추고 싶은 태도를 정리한 공간
 
