@@ -6,7 +6,7 @@
 
 > ***Main Issue: 버그 해결 완료! #ImageFolder*** 
 
-![image-20210331190359100](C:\Users\iloveslowfood\Documents\workspace\iloveTIL\boostcamp_ai\etc\images\PStage - 01. Image Classification\board.png)
+![image-20210331190359100](https://github.com/iloveslowfood/iloveTIL/blob/main/boostcamp_ai/etc/images/PStage%20-%2001.%20Image%20Classification/board.png?raw=true)
 
 - 세상에나 마상에나, 문제를 해결했다. 별다른 Augmentation 없이 아주 간단한 모델을 돌린지라 성능은 아직 부족하나, 존재했던 버그를 해결함으로써 내가 구축한 파이프라인에 신뢰감을 갖게 되었다. 이제 성능 끌어올릴 일만 남았군!
 
