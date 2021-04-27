@@ -75,6 +75,10 @@
 
 ***`df`: 판다스 데이터프레임, `srs`: 판다스 시리즈
 
+##### `pd.DataFrame.sparse.from_spmatrix`
+
+- `scipy` 라이브러리의 sparse matrix로부터 데이터프레임을 만들고자 할 떄 활용하는 함수
+
 ##### `pd.Categorical`
 
 - 컬럼 속성을 Categorical로 변환. Label Encoding을 진행할 떄 유용
