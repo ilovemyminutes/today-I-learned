@@ -2,7 +2,7 @@
 
 ## NumPy
 
-***`arr`: 넘파이 배열
+***NOTATION.*** `arr`: 넘파이 배열
 
 ##### `np.random.rand(d1, d2, ... , dn)`
 
@@ -73,7 +73,7 @@
 
 ## Pandas
 
-***`df`: 판다스 데이터프레임, `srs`: 판다스 시리즈
+***NOTATION.*** `df`: 판다스 데이터프레임, `srs`: 판다스 시리즈
 
 ##### `pd.DataFrame.sparse.from_spmatrix`
 
