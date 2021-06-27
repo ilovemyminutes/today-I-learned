@@ -4,10 +4,10 @@
 ## CONTENTS
 
 ### ✔ Presentations
+- [TechTalk - Make ML/DL Pipeline by Myself](https://github.com/iloveslowfood/today-I-learned/blob/main/boostcamp_ai/etc/%5BPT%5D%20TechTalk_ML%20Pipeline%20by%20Myself.pdf): 부스트캠프 AI Tech '테크톡'에서 발표한 자료로, ML/DL 모델 학습 파이프라인 구축에 도움될 만한 팁을 소개합니다.
 - [Transformer](https://github.com/iloveslowfood/iloveTIL/blob/main/boostcamp_ai/etc/%5BPT%5D%20Transformer.pdf): Transformer 딥러닝 모델을 소개합니다
 - [Positional Encoding](https://github.com/iloveslowfood/iloveTIL/blob/main/boostcamp_ai/etc/%5BPT%5D%20Sinusoidal%20Positional%20Encoding.pdf): Transformer 모델 내부에 활용되는 Positional Encoding을 소개합니다
 - [Recommender System - Collaborative Filtering](https://github.com/iloveslowfood/iloveTIL/blob/main/boostcamp_ai/etc/%5BPT%5D%20Recommender%20System%20-%20Collaborative%20Filtering.pdf): 전통적인 추천 알고리즘인 협업필터링 방법을 소개합니다.
-- [TechTalk - Make ML/DL Pipeline by Myself](https://github.com/iloveslowfood/today-I-learned/blob/main/boostcamp_ai/etc/%5BPT%5D%20TechTalk_ML%20Pipeline%20by%20Myself.pdf): ML/DL 모델 학습 파이프라인 구축에 도움될 만한 팁을 소개합니다.
 
 ### ✔ [Attitude](https://github.com/iloveslowfood/iloveTIL/blob/main/Attitude.md)
 - 개인적으로 갖추고 싶은 태도를 정리한 공간입니다.
