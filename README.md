@@ -12,9 +12,9 @@
 ### ✔ [Attitude](https://github.com/iloveslowfood/iloveTIL/blob/main/Attitude.md)
 - 개인적으로 갖추고 싶은 태도를 정리한 공간입니다.
 
-### ✔ [Boostcamp AI Tech](https://github.com/iloveslowfood/iloveTIL/tree/main/boostcamp_ai)
+### ✔ [boostcamp AI Tech](https://github.com/iloveslowfood/iloveTIL/tree/main/boostcamp_ai)
 
-- 네이버 커넥트재단 부스트캠프 AI Tech 교육 동안 배운 내용을 정리한 공간입니다.
+- 네이버 커넥트재단 부스트캠프 AI Tech 동안 배운 내용을 정리한 공간입니다.
 
 ### ✔ [PyTorch](https://github.com/iloveslowfood/iloveTIL/tree/main/pytorch)
 
